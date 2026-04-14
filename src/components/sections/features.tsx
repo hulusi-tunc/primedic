@@ -1,0 +1,225 @@
+import Image from "next/image";
+import { Container } from "@/components/ui/container";
+import { features, type FeatureRow, type SpecBadge } from "@/lib/content";
+import { cn } from "@/lib/cn";
+
+export function Features() {
+  return (
+    <section
+      id="urunler"
+      className="relative overflow-hidden bg-black py-[140px] md:py-[178px]"
+      style={{
+        backgroundImage:
+          "linear-gradient(151deg, rgba(178, 28, 28, 0.9) 53.35%, rgba(26, 29, 33, 0.81) 86.79%)",
+      }}
+      aria-labelledby="features-title"
+    >
+      <Container width="wide">
+        <div className="mx-auto flex max-w-[1321px] flex-col">
+          <div className="flex flex-col items-center text-center">
+            <span className="inline-flex h-[45px] items-center justify-center rounded-[38px] border border-black bg-white px-8 text-[16px] font-bold text-black md:text-[24px]">
+              {features.pretitle}
+            </span>
+            <h2
+              id="features-title"
+              className="mt-10 max-w-[672px] text-balance text-[34px] font-semibold leading-[1.2] text-white md:text-[48px]"
+            >
+              {features.title}
+            </h2>
+            <p className="mt-4 max-w-[1315px] text-[18px] font-normal leading-[1.4] text-white md:text-[24px] md:leading-[32px] lg:text-[28px] lg:leading-[36px] xl:text-[32px] xl:leading-[40px]">
+              {features.description}
+            </p>
+          </div>
+
+          <div className="mt-16 flex flex-col gap-10">
+            {features.rows.map((row) => (
+              <FeatureCard key={row.title} row={row} />
+            ))}
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function FeatureCard({ row }: { row: FeatureRow }) {
+  return (
+    <article
+      className="relative rounded-[20px] border-[1.2px] border-[#101132] p-6 backdrop-blur-[8px] md:p-10"
+      style={{
+        backgroundImage:
+          "linear-gradient(68deg, rgba(0, 0, 0, 0.3) 25.25%, rgba(83, 84, 108, 0.3) 98.05%)",
+      }}
+    >
+      <div className="flex flex-col items-center gap-10 lg:flex-row lg:gap-20">
+        <div className="flex flex-1 gap-5">
+          <RailMarker />
+          <div className="flex-1">
+            <h3 className="text-[24px] font-medium leading-[1.2] text-white md:text-[32px] lg:text-[36px]">
+              {row.title}
+            </h3>
+            <ul className="mt-7 flex flex-col gap-6">
+              {row.bullets.map((parts, i) => (
+                <li key={i} className="flex gap-4">
+                  <CheckCircle className="mt-1 h-7 w-7 shrink-0" />
+                  <p className="text-[16px] font-normal leading-[1.4] text-white md:text-[20px] lg:text-[24px]">
+                    {parts.map((part, j) => (
+                      <span
+                        key={j}
+                        className={part.strong ? "font-semibold" : undefined}
+                      >
+                        {part.text}
+                      </span>
+                    ))}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div className="relative w-full shrink-0 lg:w-[523px]">
+          {row.badges ? (
+            <div className="relative h-[280px] w-full overflow-hidden rounded-[16px] md:h-[378px]">
+              <Image
+                src={row.image}
+                alt={row.imageAlt}
+                fill
+                sizes="(min-width: 1024px) 523px, 100vw"
+                className="object-cover object-right"
+              />
+            </div>
+          ) : (
+            <div className="relative h-[280px] w-full md:h-[378px]">
+              <Image
+                src={row.image}
+                alt={row.imageAlt}
+                fill
+                sizes="(min-width: 1024px) 523px, 100vw"
+                className="object-contain object-right"
+              />
+            </div>
+          )}
+          {row.badges && <SpecBadges badges={row.badges} />}
+        </div>
+      </div>
+    </article>
+  );
+}
+
+function CheckCircle({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 28 28"
+      fill="none"
+      aria-hidden="true"
+      className={className}
+    >
+      <circle cx="14" cy="14" r="13" stroke="#ffffff" strokeWidth="1.5" />
+      <path
+        d="M8.5 14.5l3.5 3.5 7.5-8"
+        stroke="#ffffff"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function RailMarker() {
+  return (
+    <div className="flex flex-shrink-0 flex-col items-center">
+      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/30 bg-white/5 text-white">
+        <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" aria-hidden>
+          <path
+            d="M5 8l7 7 7-7M5 14l7 7 7-7"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </span>
+      <span
+        aria-hidden
+        className="mt-2 w-px flex-1 bg-gradient-to-b from-white/40 via-white/10 to-white/0"
+      />
+    </div>
+  );
+}
+
+function SpecBadges({
+  badges,
+}: {
+  badges: ReadonlyArray<SpecBadge>;
+}) {
+  return (
+    <ul className="pointer-events-none absolute -left-6 top-1/2 hidden -translate-y-1/2 flex-col gap-3 lg:flex">
+      {badges.map((b, i) => {
+        const offsets = ["-translate-x-4", "translate-x-2", "-translate-x-2"];
+        return (
+          <li
+            key={b.label}
+            className={cn(
+              "pointer-events-auto flex items-center gap-4 overflow-hidden rounded-[20px] border border-[#2c2d47] px-4 py-3 text-white backdrop-blur-[30px]",
+              offsets[i],
+            )}
+            style={{
+              backgroundImage:
+                "linear-gradient(160deg, rgba(27,28,54,0.16) 24%, rgba(112,113,122,0.16) 66%)",
+            }}
+          >
+            <span className="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-[16px] bg-white/[0.07] shadow-[0_0_0_1px_#2d2e48]">
+              <BadgeIcon name={b.icon} />
+            </span>
+            <span className="flex flex-col">
+              <span className="text-[12px] font-normal uppercase leading-[16px] tracking-[0.04em] text-white/90 md:text-[14px]">
+                {b.label}
+              </span>
+              <span className="text-[16px] font-bold leading-[24px] tracking-[-0.31px] text-white">
+                {b.value}
+              </span>
+            </span>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
+function BadgeIcon({ name }: { name: SpecBadge["icon"] }) {
+  const base = {
+    viewBox: "0 0 32 32",
+    fill: "none" as const,
+    stroke: "currentColor",
+    strokeWidth: 1.8,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    "aria-hidden": true,
+    className: "h-8 w-8 text-white",
+  };
+  switch (name) {
+    case "shield":
+      return (
+        <svg {...base}>
+          <path d="M16 4l10 4v9c0 6-4.5 10.5-10 11-5.5-.5-10-5-10-11V8z" />
+          <path d="M11 16l3.5 3.5L21 13" />
+        </svg>
+      );
+    case "target":
+      return (
+        <svg {...base}>
+          <circle cx="16" cy="16" r="11" />
+          <circle cx="16" cy="16" r="6" />
+          <circle cx="16" cy="16" r="1.5" fill="currentColor" />
+        </svg>
+      );
+    case "pulse":
+      return (
+        <svg {...base}>
+          <path d="M4 16h5l3-8 4 16 3-8h9" />
+        </svg>
+      );
+  }
+}
