@@ -16,11 +16,11 @@ export function UseCases() {
           <Pretitle>{useCases.pretitle}</Pretitle>
           <h2
             id="use-cases-title"
-            className="mt-8 max-w-[900px] text-balance text-[32px] font-semibold leading-[1.15] text-white md:text-[52px]"
+            className="mt-8 max-w-[900px] text-white"
           >
             {useCases.title}
           </h2>
-          <p className="mt-6 max-w-[1100px] text-[17px] leading-[1.55] text-white/75 md:text-[20px]">
+          <p className="text-body-lg mt-6 max-w-[1100px] text-white/75">
             {useCases.description}
           </p>
         </div>
@@ -35,10 +35,10 @@ export function UseCases() {
                 <UseCaseIcon name={item.icon} />
               </span>
               <div>
-                <h3 className="text-[20px] font-semibold leading-[1.2] text-white md:text-[22px]">
+                <h3 className="text-[20px] leading-[1.2] text-white md:text-[22px]">
                   {item.title}
                 </h3>
-                <p className="mt-3 text-[15px] leading-[1.55] text-white/70 md:text-[16px]">
+                <p className="text-body-sm mt-3 text-white/70">
                   {item.description}
                 </p>
               </div>

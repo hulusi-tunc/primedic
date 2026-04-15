@@ -15,7 +15,7 @@ export function ProductCTA() {
           </span>
 
           <h2
-            className="mt-6 max-w-[960px] bg-clip-text text-[44px] font-semibold leading-[1.15] text-transparent md:text-[72px] md:leading-[1.2]"
+            className="text-display mt-6 max-w-[960px] bg-clip-text text-transparent"
             style={{
               backgroundImage:
                 "linear-gradient(180deg, #b21c1c 38%, #2D2E2E 73%)",
@@ -26,7 +26,7 @@ export function ProductCTA() {
 
           <div className="mt-6 h-[5px] w-[240px] bg-[#b21c1c] md:w-[300px]" />
 
-          <p className="mx-auto mt-12 max-w-[1100px] text-[20px] font-medium leading-[1.5] text-[#2D2E2E] md:text-[30px] md:leading-[42px]">
+          <p className="text-lead-lg mx-auto mt-12 max-w-[1100px] font-medium text-[#2D2E2E]">
             {description}
           </p>
 

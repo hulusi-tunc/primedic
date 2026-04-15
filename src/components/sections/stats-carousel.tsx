@@ -28,7 +28,7 @@ export function StatsCarousel() {
       <Container width="wide">
         <h2
           id="stats-title"
-          className="mx-auto text-center text-[36px] font-semibold leading-[1.2] text-white md:text-[52px]"
+          className="mx-auto text-center text-white"
         >
           <span className="block">Kalp Durmasında</span>
           <span className="block">Erken Müdahalenin Önemi</span>
@@ -46,7 +46,7 @@ export function StatsCarousel() {
               }}
             >
               <div className="flex min-h-[227px] w-full flex-col items-center justify-center gap-5">
-                <p className="self-start text-[13px] font-normal uppercase leading-[16px] tracking-[0.04em] text-[#b21c1c] md:text-[15px]">
+                <p className="text-eyebrow self-start text-[#b21c1c]">
                   {slide.source}
                 </p>
                 <p

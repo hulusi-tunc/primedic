@@ -26,10 +26,10 @@ export function ProductConnectivity() {
 
       <Container className="relative z-10">
         <header className="mx-auto max-w-[800px] text-center">
-          <h2 className="text-[40px] font-semibold leading-[1.1] text-[#b21c1c] md:text-[48px] md:leading-[64px]">
+          <h2 className="text-[#b21c1c]">
             {title}
           </h2>
-          <p className="mt-8 text-[16px] leading-[1.55] text-[#2D2E2E] md:text-[22px] md:leading-[32px] md:tracking-[-0.45px]">
+          <p className="text-lead mt-8 text-[#2D2E2E]">
             {description}
           </p>
         </header>
@@ -40,10 +40,10 @@ export function ProductConnectivity() {
               key={item.title}
               className="rounded-[38px] border-2 border-[#b21c1c] p-10 md:p-14"
             >
-              <h3 className="text-[24px] font-semibold leading-[30px] text-[#2D2E2E] md:text-[32px]">
+              <h3 className="text-[#2D2E2E]">
                 {item.title}
               </h3>
-              <p className="mt-6 text-[16px] leading-[1.5] text-[#2D2E2E]/90 md:text-[22px] md:leading-[30px] md:tracking-[-0.3px]">
+              <p className="text-body mt-6 text-[#2D2E2E]/90">
                 {item.body}
               </p>
             </article>

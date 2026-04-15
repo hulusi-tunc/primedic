@@ -5,7 +5,7 @@ import { yonetmelik } from "@/lib/content.yonetmelik";
 function ParagraphText({ text }: { text: string }) {
   const parts = text.split(/(\*\*[^*]+\*\*)/g);
   return (
-    <p className="text-[17px] leading-[1.55] text-white md:text-[22px] md:leading-[36px] lg:text-[26px] lg:leading-[42px]">
+    <p className="text-lead text-white">
       {parts.map((part, i) => {
         if (part.startsWith("**") && part.endsWith("**")) {
           return (
@@ -38,7 +38,7 @@ export function YonetmelikRegulation() {
             {pretitle}
           </span>
 
-          <h2 className="mt-12 text-[32px] font-semibold leading-[1.2] text-white md:text-[40px] lg:text-[48px]">
+          <h2 className="mt-12 text-white">
             {title}
           </h2>
         </header>
@@ -47,7 +47,7 @@ export function YonetmelikRegulation() {
           {chapters.map((chapter) => (
             <div key={chapter.number}>
               <header className="mx-auto max-w-[990px] text-center">
-                <h3 className="text-[28px] font-semibold leading-[1.2] text-white md:text-[32px] lg:text-[36px] lg:leading-[50px]">
+                <h3 className="text-white">
                   {chapter.number}
                 </h3>
                 <p className="text-[28px] font-semibold leading-[1.2] text-white md:text-[32px] lg:text-[36px] lg:leading-[50px]">
@@ -58,7 +58,7 @@ export function YonetmelikRegulation() {
               <div className="mt-12 space-y-12 md:mt-16 md:space-y-16">
                 {chapter.articles.map((article) => (
                   <article key={article.heading}>
-                    <h4 className="text-[22px] font-bold leading-[1.2] text-white md:text-[28px] lg:text-[32px] lg:leading-[50px]">
+                    <h4 className="font-bold text-white lg:leading-[50px]">
                       {article.heading}
                     </h4>
                     <div className="mt-4 space-y-3 md:mt-6 md:space-y-4">

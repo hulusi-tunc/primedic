@@ -23,12 +23,12 @@ export function Hero() {
           <div className="relative z-10 flex flex-col items-center">
             <Pretitle>{hero.pretitle}</Pretitle>
 
-            <h1 className="mt-8 max-w-[940px] text-[44px] font-semibold leading-[1.05] text-white md:text-[72px]">
+            <h1 className="text-display mt-8 max-w-[940px] text-white">
               <span className="block">{hero.titleLine1}</span>
               <span className="block">{hero.titleLine2}</span>
             </h1>
 
-            <p className="mt-6 max-w-[820px] text-[17px] leading-[1.55] text-white/75 md:text-[22px] md:leading-[32.5px] md:tracking-[-0.45px]">
+            <p className="text-lead mt-6 max-w-[820px] text-white/75">
               {hero.description}
             </p>
           </div>

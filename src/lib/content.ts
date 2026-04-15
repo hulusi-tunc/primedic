@@ -19,8 +19,8 @@ export const nav: {
       ],
     },
     { label: "Yönetmelik", href: "/yonetmelik" },
-    { label: "Hakkımızda", href: "/#hakkimizda" },
-    { label: "İletişim", href: "/#iletisim" },
+    { label: "Hakkımızda", href: "/hakkimizda" },
+    { label: "İletişim", href: "/iletisim" },
     { label: "Blog", href: "/blog" },
   ],
 };
@@ -222,7 +222,7 @@ export const ctaBanner = {
   description:
     "İş yerleri, kurumlar ve bireysel kullanıcılar için uygun Primedic defibrilatör çözümleri hakkında bilgi almak ve sipariş oluşturmak için bizimle iletişime geçin.",
   actionLabel: "İletişime Geç",
-  actionHref: "/#iletisim",
+  actionHref: "/iletisim",
 };
 
 export const useCases = {
@@ -324,8 +324,8 @@ export const footerContent = {
         { label: "Ana Sayfa", href: "/" },
         { label: "Ürünler", href: "/#urunler" },
         { label: "Yönetmelik", href: "/yonetmelik" },
-        { label: "Hakkımızda", href: "/#hakkimizda" },
-        { label: "İletişim", href: "/#iletisim" },
+        { label: "Hakkımızda", href: "/hakkimizda" },
+        { label: "İletişim", href: "/iletisim" },
         { label: "Blog", href: "/blog" },
       ],
     },

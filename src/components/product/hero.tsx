@@ -20,11 +20,11 @@ export function ProductHero() {
 
       <Container width="wide">
         <div className="mx-auto max-w-[720px] pt-[180px] pb-[60px] text-center md:pt-[220px] lg:mx-0 lg:ml-[6%] xl:ml-[10%]">
-          <h1 className="text-[44px] font-bold leading-[1.05] tracking-[0.26px] text-white md:text-[60px] md:leading-[75px]">
+          <h1 className="font-bold tracking-[0.26px] text-white">
             {brand}
           </h1>
 
-          <p className="mt-10 text-[32px] font-semibold leading-[1.15] tracking-[0.3px] text-white md:text-[48px] md:leading-[1.1]">
+          <p className="text-tagline mt-10 text-white">
             {tagline}
           </p>
 
@@ -39,7 +39,7 @@ export function ProductHero() {
         </div>
       </Container>
 
-      <div className="relative mx-auto max-w-[480px] px-6 pb-12 lg:absolute lg:bottom-0 lg:right-0 lg:mx-0 lg:max-w-none lg:p-0">
+      <div className="relative mr-auto max-w-[480px] pr-6 lg:absolute lg:bottom-0 lg:right-0 lg:mr-0 lg:max-w-none lg:p-0">
         <Image
           src={imageSrc}
           alt={imageAlt}

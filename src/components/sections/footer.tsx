@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
+import { LanguageSwitcher } from "@/components/ui/language-switcher";
 import { footerContent } from "@/lib/content";
 
 export function Footer() {
@@ -29,7 +30,7 @@ export function Footer() {
           <div className="grid gap-10 md:grid-cols-[auto_auto_1fr] md:items-start md:justify-items-end">
             {footerContent.companyColumns.map((col) => (
               <nav key={col.title} aria-label={col.title} className="min-w-[140px]">
-                <h3 className="text-[13px] font-semibold uppercase tracking-[0.14em] text-white/60">
+                <h3 className="text-eyebrow text-white/60">
                   {col.title}
                 </h3>
                 <ul className="mt-5 space-y-3 text-[15px] text-white/85">
@@ -62,16 +63,8 @@ export function Footer() {
                 ))}
               </ul>
 
-              <div className="mt-8 flex items-center gap-2 text-[14px] text-white/70">
-                <svg viewBox="0 0 20 20" fill="none" className="h-5 w-5" aria-hidden>
-                  <circle cx="10" cy="10" r="8" stroke="currentColor" strokeWidth="1.5" />
-                  <path
-                    d="M2 10h16M10 2a12 12 0 0 1 0 16M10 2a12 12 0 0 0 0 16"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                  />
-                </svg>
-                <span className="font-medium">TR</span>
+              <div className="mt-8">
+                <LanguageSwitcher />
               </div>
             </div>
           </div>

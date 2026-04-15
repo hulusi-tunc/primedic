@@ -14,7 +14,7 @@ export function ProductOverview() {
         width={384}
         height={184}
         unoptimized
-        className="pointer-events-none absolute left-[-30px] top-[110px] hidden w-[380px] select-none lg:block xl:left-[-10px] xl:w-[460px]"
+        className="pointer-events-none absolute top-[110px] hidden w-[380px] select-none lg:left-[calc(50%-948px)] lg:block xl:left-[calc(50%-1028px)] xl:w-[460px]"
       />
       <Image
         src="/images/product/heartbeat-right.svg"
@@ -23,13 +23,13 @@ export function ProductOverview() {
         width={375}
         height={184}
         unoptimized
-        className="pointer-events-none absolute right-[-30px] top-[110px] hidden w-[380px] select-none lg:block xl:right-[-10px] xl:w-[460px]"
+        className="pointer-events-none absolute top-[110px] hidden w-[380px] select-none lg:right-[calc(50%-948px)] lg:block xl:right-[calc(50%-1028px)] xl:w-[460px]"
       />
 
       <Container>
         <div className="mx-auto max-w-[1055px] text-center">
           <h2
-            className="bg-clip-text text-[48px] font-semibold leading-[1.15] text-transparent md:text-[48px] md:leading-[64px]"
+            className="bg-clip-text text-transparent"
             style={{
               backgroundImage:
                 "linear-gradient(180deg, #b21c1c 30%, #2D2E2E 100%)",
@@ -37,7 +37,7 @@ export function ProductOverview() {
           >
             {title}
           </h2>
-          <p className="mt-10 text-[17px] leading-[1.55] text-[#2D2E2E]/85 md:text-[22px] md:leading-[32px] md:tracking-[-0.45px]">
+          <p className="text-lead mt-10 text-[#2D2E2E]/85">
             {description}
           </p>
         </div>
@@ -54,10 +54,10 @@ export function ProductOverview() {
               <ul className="grid gap-x-14 gap-y-16 md:grid-cols-3">
                 {group.items.map((item) => (
                   <li key={item.title}>
-                    <h3 className="text-[20px] font-bold leading-[30px] text-[#2D2E2E] md:text-[24px]">
+                    <h3 className="text-[20px] font-bold leading-[30px] text-[#2D2E2E] md:text-[24px] md:leading-[32px]">
                       {item.title}
                     </h3>
-                    <p className="mt-5 text-[15px] leading-[1.5] text-[#2D2E2E]/85 md:text-[20px] md:leading-[25px]">
+                    <p className="text-body mt-5 text-[#2D2E2E]/85">
                       {item.body}
                     </p>
                   </li>

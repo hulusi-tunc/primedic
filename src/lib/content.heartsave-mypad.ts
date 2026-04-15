@@ -24,7 +24,7 @@ export const heartsaveMypad = {
     description:
       "Ani kalp durması durumlarında kullanılmak üzere tasarlanan HeartSave myPAD, kalp ritmini analiz eder, gerektiğinde otomatik defibrilasyon uygular ve kullanıcıyı CPR uygulaması için adım adım yönlendirir.",
     ctaLabel: "İletişime Geç",
-    ctaHref: "/#iletisim",
+    ctaHref: "/iletisim",
     imageSrc: "/images/product/heartsave-mypad-hero.png",
     imageAlt:
       "HeartSave myPAD otomatik eksternal defibrilatör (AED) — kompakt gövde, renkli ekran ve CPR geri bildirim sensörü",
@@ -171,6 +171,6 @@ export const heartsaveMypad = {
     description:
       "İş yerleri, kurumlar ve bireysel kullanıcılar için uygun Primedic defibrilatör çözümleri hakkında bilgi almak ve sipariş oluşturmak için bizimle iletişime geçin.",
     actionLabel: "İletişime Geç",
-    actionHref: "/#iletisim",
+    actionHref: "/iletisim",
   },
 } as const;

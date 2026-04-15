@@ -2,14 +2,29 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Container } from "@/components/ui/container";
-import { nav } from "@/lib/content";
+import { nav, type NavItem } from "@/lib/content";
 
 const linkBase =
-  "text-[17px] font-medium text-white/90 transition-colors hover:text-white focus-visible:text-white focus-visible:outline-none";
+  "text-[17px] transition-colors hover:text-white focus-visible:text-white focus-visible:outline-none";
+const linkInactive = "font-medium text-white/70";
+const linkActive = "font-semibold text-white";
+
+function isItemActive(item: NavItem, pathname: string): boolean {
+  if (item.href) {
+    if (item.href === "/") return pathname === "/";
+    return pathname === item.href || pathname.startsWith(`${item.href}/`);
+  }
+  return !!item.children?.some(
+    (child) =>
+      pathname === child.href || pathname.startsWith(`${child.href}/`),
+  );
+}
 
 export function MenuBar() {
+  const pathname = usePathname() ?? "/";
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -45,7 +60,7 @@ export function MenuBar() {
       <Container width="wide">
         <div
           className={`flex items-center justify-between transition-[height] duration-300 ${
-            scrolled ? "h-[80px] md:h-[88px]" : "h-[120px] md:h-[150px]"
+            scrolled ? "h-[72px] md:h-[80px]" : "h-[96px] md:h-[112px]"
           }`}
         >
           <Link
@@ -60,7 +75,7 @@ export function MenuBar() {
               height={66}
               priority
               className={`w-auto transition-[height] duration-300 ${
-                scrolled ? "h-[40px] md:h-[48px]" : "h-[52px] md:h-[66px]"
+                scrolled ? "h-[32px] md:h-[36px]" : "h-[40px] md:h-[48px]"
               }`}
             />
           </Link>
@@ -99,13 +114,15 @@ export function MenuBar() {
             aria-label="Ana menü"
             className="hidden items-center gap-10 lg:flex"
           >
-            {nav.items.map((item) =>
-              item.children ? (
+            {nav.items.map((item) => {
+              const active = isItemActive(item, pathname);
+              return item.children ? (
                 <div key={item.label} className="group relative">
                   <button
                     type="button"
-                    className={`${linkBase} inline-flex items-center gap-1.5`}
+                    className={`${linkBase} ${active ? linkActive : linkInactive} inline-flex items-center gap-1.5`}
                     aria-haspopup="menu"
+                    aria-current={active ? "page" : undefined}
                   >
                     {item.label}
                     <svg
@@ -149,12 +166,13 @@ export function MenuBar() {
                 <Link
                   key={item.href}
                   href={item.href!}
-                  className={linkBase}
+                  aria-current={active ? "page" : undefined}
+                  className={`${linkBase} ${active ? linkActive : linkInactive}`}
                 >
                   {item.label}
                 </Link>
-              ),
-            )}
+              );
+            })}
           </nav>
         </div>
       </Container>
@@ -166,24 +184,35 @@ export function MenuBar() {
         <Container width="wide">
           <nav aria-label="Mobil menü" className="py-6">
             <ul className="flex flex-col gap-1">
-              {nav.items.map((item) =>
-                item.children ? (
+              {nav.items.map((item) => {
+                const active = isItemActive(item, pathname);
+                return item.children ? (
                   <li key={item.label} className="py-2">
                     <div className="px-3 pb-2 text-[13px] font-semibold uppercase tracking-wider text-white/50">
                       {item.label}
                     </div>
                     <ul className="flex flex-col gap-1">
-                      {item.children.map((child) => (
-                        <li key={child.href}>
-                          <Link
-                            href={child.href}
-                            onClick={() => setMobileOpen(false)}
-                            className="block rounded-[12px] px-3 py-3 text-[17px] font-medium text-white/90 transition-colors hover:bg-white/10 hover:text-white"
-                          >
-                            {child.label}
-                          </Link>
-                        </li>
-                      ))}
+                      {item.children.map((child) => {
+                        const childActive =
+                          pathname === child.href ||
+                          pathname.startsWith(`${child.href}/`);
+                        return (
+                          <li key={child.href}>
+                            <Link
+                              href={child.href}
+                              onClick={() => setMobileOpen(false)}
+                              aria-current={childActive ? "page" : undefined}
+                              className={`block rounded-[12px] px-3 py-3 text-[17px] transition-colors hover:bg-white/10 hover:text-white ${
+                                childActive
+                                  ? "font-semibold text-white"
+                                  : "font-medium text-white/70"
+                              }`}
+                            >
+                              {child.label}
+                            </Link>
+                          </li>
+                        );
+                      })}
                     </ul>
                   </li>
                 ) : (
@@ -191,13 +220,18 @@ export function MenuBar() {
                     <Link
                       href={item.href!}
                       onClick={() => setMobileOpen(false)}
-                      className="block rounded-[12px] px-3 py-3 text-[17px] font-medium text-white/90 transition-colors hover:bg-white/10 hover:text-white"
+                      aria-current={active ? "page" : undefined}
+                      className={`block rounded-[12px] px-3 py-3 text-[17px] transition-colors hover:bg-white/10 hover:text-white ${
+                        active
+                          ? "font-semibold text-white"
+                          : "font-medium text-white/70"
+                      }`}
                     >
                       {item.label}
                     </Link>
                   </li>
-                ),
-              )}
+                );
+              })}
             </ul>
           </nav>
         </Container>

@@ -18,7 +18,7 @@ export function MidCTA() {
 
             <h2
               id="cta-title"
-              className="max-w-[952px] text-balance bg-gradient-to-b from-[#b21c1c] from-[37.567%] to-black to-[73.375%] bg-clip-text text-[44px] font-semibold leading-[1.2] text-transparent md:text-[78px]"
+              className="text-display-xl max-w-[952px] bg-gradient-to-b from-[#b21c1c] from-[37.567%] to-black to-[73.375%] bg-clip-text text-transparent"
             >
               {ctaBanner.title} {ctaBanner.titleAccent}
             </h2>
@@ -29,7 +29,7 @@ export function MidCTA() {
             />
           </div>
 
-          <p className="max-w-[1386px] text-[20px] font-medium leading-[1.4] text-[#2d2e2e] md:text-[36px] md:leading-[50px]">
+          <p className="text-lead-lg max-w-[1386px] font-medium text-[#2d2e2e]">
             {ctaBanner.description}
           </p>
 

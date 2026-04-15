@@ -19,10 +19,10 @@ export function ProductDetails() {
 
       <Container width="wide">
         <header className="mx-auto max-w-[1030px] text-center">
-          <h2 className="text-[36px] font-semibold leading-[1.15] text-white md:text-[48px] md:leading-[64px]">
+          <h2 className="text-white">
             {heading}
           </h2>
-          <p className="mx-auto mt-8 max-w-[920px] text-[18px] leading-[1.5] text-white/85 md:text-[24px] md:leading-[36px] md:tracking-[-0.45px]">
+          <p className="text-lead mx-auto mt-8 max-w-[920px] text-white/85">
             {description}
           </p>
         </header>
@@ -31,7 +31,11 @@ export function ProductDetails() {
           {cards.map((card) => (
             <article
               key={card.title}
-              className="grid gap-10 rounded-[44px] border border-white/15 p-8 md:p-12 lg:grid-cols-[minmax(0,560px)_minmax(0,1fr)] lg:items-center lg:gap-14"
+              className={`grid gap-10 rounded-[44px] border border-white/15 p-8 md:p-12 lg:items-center lg:gap-14 ${
+                card.imageOnRight
+                  ? "lg:grid-cols-[minmax(0,1fr)_minmax(0,560px)]"
+                  : "lg:grid-cols-[minmax(0,560px)_minmax(0,1fr)]"
+              }`}
               style={{
                 background:
                   "linear-gradient(63.23deg, rgba(0, 0, 0, 0.35) 25%, rgba(83, 84, 108, 0.35) 98%)",
@@ -51,10 +55,10 @@ export function ProductDetails() {
               </div>
 
               <div className={card.imageOnRight ? "lg:order-1" : "lg:order-2"}>
-                <h3 className="text-[28px] font-semibold leading-[1.1] tracking-[-0.45px] text-white md:text-[36px] md:leading-[40px]">
+                <h3 className="tracking-[-0.45px] text-white">
                   {card.title}
                 </h3>
-                <p className="mt-6 text-[16px] leading-[1.55] text-white/90 md:text-[22px] md:leading-[30px] md:tracking-[-0.3px]">
+                <p className="text-body mt-6 text-white/90">
                   {card.description}
                 </p>
 

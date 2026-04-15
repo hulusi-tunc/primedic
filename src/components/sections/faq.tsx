@@ -20,7 +20,7 @@ export function FAQ() {
         <div className="mx-auto max-w-[1408px] px-4 md:px-[112px]">
           <h2
             id="faq-title"
-            className="max-w-[738px] text-[40px] font-bold leading-[1.1] tracking-[-0.5px] text-black md:text-[56px] md:leading-[67.2px]"
+            className="max-w-[738px] font-bold tracking-[-0.5px] text-black"
           >
             {faq.title}
           </h2>

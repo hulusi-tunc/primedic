@@ -22,11 +22,11 @@ export function Features() {
             </span>
             <h2
               id="features-title"
-              className="mt-10 max-w-[672px] text-balance text-[34px] font-semibold leading-[1.2] text-white md:text-[48px]"
+              className="mt-10 max-w-[672px] text-white"
             >
               {features.title}
             </h2>
-            <p className="mt-4 max-w-[1315px] text-[18px] font-normal leading-[1.4] text-white md:text-[24px] md:leading-[32px] lg:text-[28px] lg:leading-[36px] xl:text-[32px] xl:leading-[40px]">
+            <p className="text-lead-lg mt-4 max-w-[1315px] text-white">
               {features.description}
             </p>
           </div>
@@ -55,14 +55,14 @@ function FeatureCard({ row }: { row: FeatureRow }) {
         <div className="flex flex-1 gap-5">
           <RailMarker />
           <div className="flex-1">
-            <h3 className="text-[24px] font-medium leading-[1.2] text-white md:text-[32px] lg:text-[36px]">
+            <h3 className="font-medium text-white">
               {row.title}
             </h3>
             <ul className="mt-7 flex flex-col gap-6">
               {row.bullets.map((parts, i) => (
                 <li key={i} className="flex gap-4">
                   <CheckCircle className="mt-1 h-7 w-7 shrink-0" />
-                  <p className="text-[16px] font-normal leading-[1.4] text-white md:text-[20px] lg:text-[24px]">
+                  <p className="text-body-lg text-white">
                     {parts.map((part, j) => (
                       <span
                         key={j}
