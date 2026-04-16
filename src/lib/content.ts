@@ -273,7 +273,7 @@ export const useCases = {
   description:
     "HeartSave myPAD; akıllı defibrilasyon teknolojisi, gerçek zamanlı CPR geri bildirimi, üstün dayanıklılık ve IoT bağlantı özelliklerini tek bir kompakt yapıda birleştirir. Her saniyenin kritik olduğu ortamlarda güvenle müdahale için tasarlanmıştır.",
   actionLabel: "Yönetmeliği Oku",
-  actionHref: "/#yonetmelik",
+  actionHref: "/yonetmelik",
   items: [
     {
       icon: "briefcase",
@@ -396,7 +396,7 @@ export const footerContent = {
       title: "Menü",
       links: [
         { label: "Ana Sayfa", href: "/" },
-        { label: "Ürünler", href: "/#urunler" },
+        { label: "Ürünler", href: "/urunler/heartsave-mypad" },
         { label: "Yönetmelik", href: "/yonetmelik" },
         { label: "Hakkımızda", href: "/hakkimizda" },
         { label: "İletişim", href: "/iletisim" },

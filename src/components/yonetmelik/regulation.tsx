@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { yonetmelik } from "@/lib/content.yonetmelik";
@@ -73,7 +74,15 @@ export function YonetmelikRegulation() {
           ))}
         </div>
 
-        <div className="mt-20 flex justify-center md:mt-28">
+        <div className="mt-20 flex flex-col items-center gap-6 md:mt-28">
+          <Image
+            src="/images/yonetmelik/pdf-icon.svg"
+            alt="PDF belgesi"
+            width={166}
+            height={172}
+            unoptimized
+            className="h-[120px] w-auto md:h-[160px]"
+          />
           <Link
             href={download.href}
             className="inline-flex h-[56px] w-[242px] items-center justify-center rounded-[24px] border-2 border-[#b21c1c] bg-white text-[20px] font-bold text-[#b21c1c] transition-colors hover:bg-[#b21c1c] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#3c0a0a] md:text-[24px]"
