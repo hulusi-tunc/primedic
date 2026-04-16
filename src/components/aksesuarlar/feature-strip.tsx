@@ -145,13 +145,13 @@ export function AksesuarFeatureStrip() {
         {featureStrip.map((card) => (
           <article
             key={card.id}
-            className="flex w-[294px] shrink-0 flex-col rounded-[20px] border border-white/15 pb-5 shadow-[0_24px_48px_-16px_rgba(0,0,0,0.65)]"
+            className="flex w-[240px] shrink-0 flex-col rounded-[20px] border border-white/15 pb-5 shadow-[0_24px_48px_-16px_rgba(0,0,0,0.65)] md:w-[294px] xl:w-[320px] 2xl:w-[360px]"
             style={{
               backgroundImage:
                 "linear-gradient(80deg, rgba(0,0,0,0.3) 25%, rgba(83,84,108,0.3) 98%)",
             }}
           >
-            <div className="relative h-[250px] w-full overflow-hidden rounded-t-[20px]">
+            <div className="relative h-[200px] w-full overflow-hidden rounded-t-[20px] md:h-[250px] xl:h-[280px] 2xl:h-[320px]">
               <Image
                 src={card.image.src}
                 alt={card.image.alt}
@@ -170,7 +170,7 @@ export function AksesuarFeatureStrip() {
 
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#555c6a] to-transparent opacity-60"
+        className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[#3d4452] to-transparent opacity-80"
       />
 
       <div

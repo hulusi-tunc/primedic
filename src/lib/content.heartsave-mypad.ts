@@ -88,6 +88,7 @@ export const heartsaveMypad = {
     heading: "Cihazı Tanıyın",
     description:
       "HeartSave myPAD'in kullanım akışını ve CPR geri bildirim sensörünün çalışma prensibini kısa bir tanıtım videosu ile inceleyin.",
+    youtubeId: "msKG9Ls4ecE",
     posterSrc: "/images/product/video-poster.jpg",
     posterAlt:
       "HeartSave myPAD tanıtım videosu önizleme görseli",

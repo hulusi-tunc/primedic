@@ -11,9 +11,6 @@ type Language = {
 const languages: ReadonlyArray<Language> = [
   { code: "TR", label: "Türkçe", flag: "🇹🇷" },
   { code: "EN", label: "English", flag: "🇬🇧" },
-  { code: "DE", label: "Deutsch", flag: "🇩🇪" },
-  { code: "FR", label: "Français", flag: "🇫🇷" },
-  { code: "AR", label: "العربية", flag: "🇸🇦" },
 ];
 
 export function LanguageSwitcher() {
@@ -73,7 +70,7 @@ export function LanguageSwitcher() {
         <ul
           role="listbox"
           aria-label="Dil listesi"
-          className="absolute bottom-full right-0 mb-2 min-w-[180px] overflow-hidden rounded-[14px] border border-white/15 bg-[#2a0505]/95 p-1 shadow-2xl backdrop-blur md:left-auto"
+          className="absolute bottom-full right-0 mb-2 min-w-[180px] overflow-hidden rounded-[14px] border border-white/15 bg-[#2a0505] p-1 shadow-2xl md:left-auto"
         >
           {languages.map((lang) => {
             const isActive = lang.code === selected.code;

@@ -9,12 +9,20 @@ export function AksesuarHero() {
 
   return (
     <section
-      className="relative isolate overflow-hidden pt-[180px] pb-[80px] md:pt-[240px]"
+      className="relative isolate overflow-hidden pt-[180px] pb-[80px] md:pt-[240px] md:pb-[120px]"
       style={{
         backgroundImage:
-          "linear-gradient(180deg, #080e18 0%, #2b3240 55%, #555c6a 100%)",
+          "linear-gradient(180deg, #080e18 0%, #2b3240 50%, #3d4452 100%)",
       }}
     >
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-[120px]"
+        style={{
+          backgroundImage:
+            "linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.06) 60%, rgba(255,255,255,0.15) 100%)",
+        }}
+      />
       <Container width="wide">
         <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:gap-16">
           <div className="flex flex-col gap-8">

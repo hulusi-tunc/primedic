@@ -94,7 +94,7 @@ export function AksesuarAccessories() {
         </div>
 
         {/* Groups */}
-        <div className="mx-auto mt-14 flex max-w-[1100px] flex-col gap-10 md:mt-20 md:gap-12">
+        <div className="mx-auto mt-14 flex max-w-[1100px] flex-col gap-10 md:mt-20 md:gap-12 2xl:max-w-[1400px]">
           {groups.map((group) => (
             <GroupCard
               key={group.id}
@@ -243,9 +243,11 @@ function AccordionRow({
         }`}
       >
         <div className="overflow-hidden">
-          <p className="text-body-sm px-5 pb-5 text-[#070f17]/85">
-            {row.body}
-          </p>
+          <div className="text-body-sm space-y-3 px-5 pb-5 text-[#070f17]/85">
+            {row.body.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -262,31 +264,15 @@ function VisualColumn({
   const image = openRow?.image ?? defaultImage;
 
   return (
-    <div className="relative flex flex-col items-center justify-between gap-6 bg-[#fafafa] p-8 md:p-10">
-      <div className="flex h-14 items-center">
-        <PrimedicWordmark />
-      </div>
-
-      <div className="flex min-h-[280px] flex-1 flex-col items-center justify-center gap-4">
-        {openRow && (
-          <div className="flex h-16 w-16 items-center justify-center rounded-[12px] border border-black/10 bg-white px-2 text-center text-[11px] font-semibold leading-tight text-[#22415e] shadow-sm">
-            {openRow.iconLabel}
-          </div>
-        )}
-        <div className="relative h-[260px] w-full max-w-[280px]">
-          <Image
-            src={image.src}
-            alt={image.alt}
-            fill
-            sizes="(max-width: 768px) 60vw, 280px"
-            className="object-contain"
-          />
-        </div>
-      </div>
-
-      <div className="flex h-14 items-center">
-        <BilginTipWordmark />
-      </div>
+    <div className="relative hidden self-stretch md:block">
+      <Image
+        key={image.src}
+        src={image.src}
+        alt={image.alt}
+        fill
+        sizes="(max-width: 1024px) 40vw, 380px"
+        className="object-contain object-top"
+      />
     </div>
   );
 }
@@ -309,18 +295,3 @@ function ArrowIcon() {
   );
 }
 
-function PrimedicWordmark() {
-  return (
-    <span className="text-[13px] font-bold uppercase tracking-[0.12em] text-[#b21c1c]">
-      PRIMEDIC
-    </span>
-  );
-}
-
-function BilginTipWordmark() {
-  return (
-    <span className="text-[12px] font-bold uppercase tracking-[0.1em] text-[#22415e]">
-      Bilgin Tıp
-    </span>
-  );
-}
