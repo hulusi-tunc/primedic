@@ -35,22 +35,22 @@ export const hakkimizda = {
     actionHref: "/iletisim",
     tiles: [
       {
-        src: "/images/hakkimizda/hero-tall-left.png",
+        src: "/images/hakkimizda/hero-tall-left.webp",
         alt: "Bilgin Tıp Medikal uzman ekibi",
         area: "tall-left",
       },
       {
-        src: "/images/hakkimizda/hero-short-top.png",
+        src: "/images/hakkimizda/hero-short-top.webp",
         alt: "Ürün portföyünden medikal cihaz",
         area: "short-top",
       },
       {
-        src: "/images/hakkimizda/hero-short-bottom.png",
+        src: "/images/hakkimizda/hero-short-bottom.webp",
         alt: "Sahada eğitim ve kurulum",
         area: "short-bottom",
       },
       {
-        src: "/images/hakkimizda/hero-tall-right.png",
+        src: "/images/hakkimizda/hero-tall-right.webp",
         alt: "Acil müdahale çözümleri",
         area: "tall-right",
       },
@@ -99,7 +99,7 @@ export const hakkimizda = {
       "Hayat kurtarmaya odaklanan bu yaklaşım, PRIMEDIC'i yalnızca bir cihaz üreticisi değil, acil müdahale süreçlerinin güvenilir çözüm ortağı haline getirir.",
     ],
     image: {
-      src: "/images/hakkimizda/primedic-team.png",
+      src: "/images/hakkimizda/primedic-team.webp",
       alt: "PRIMEDIC — defibrilasyonda global güç, saha ekibi",
     },
     quote: {

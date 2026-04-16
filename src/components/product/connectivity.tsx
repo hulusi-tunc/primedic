@@ -8,7 +8,7 @@ export function ProductConnectivity() {
   return (
     <section className="relative overflow-hidden bg-white py-[88px] text-[#2D2E2E] md:py-[140px]">
       <Image
-        src="/images/product/connectivity-screenshot-1.png"
+        src="/images/product/connectivity-screenshot-1.webp"
         alt=""
         aria-hidden
         width={696}
@@ -16,7 +16,7 @@ export function ProductConnectivity() {
         className="pointer-events-none absolute bottom-[80px] right-[-180px] hidden w-[640px] -rotate-[4.67deg] select-none lg:block"
       />
       <Image
-        src="/images/product/connectivity-screenshot-2.png"
+        src="/images/product/connectivity-screenshot-2.webp"
         alt=""
         aria-hidden
         width={522}

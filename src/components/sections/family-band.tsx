@@ -5,7 +5,7 @@ export function FamilyBand() {
     <section aria-label="Primedic ürün ailesi" className="bg-[#3c0a0a]">
       <div className="relative aspect-[1920/857] w-full">
         <Image
-          src="/images/primedic-family.png"
+          src="/images/primedic-family.webp"
           alt="Primedic defibrilatör ürün ailesi"
           fill
           sizes="100vw"

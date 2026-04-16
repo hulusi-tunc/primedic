@@ -10,7 +10,7 @@ export function PartnerBand() {
       <Container>
         <div className="flex items-center justify-center">
           <Image
-            src="/logos/primedic-german-approved.png"
+            src="/logos/primedic-german-approved.webp"
             alt="Designed & Developed in Germany — PRIMEDIC Saves Life. Everywhere."
             width={672}
             height={141}

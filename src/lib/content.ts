@@ -121,7 +121,7 @@ export const features: {
   rows: [
     {
       title: "Her An Kalbiniz Güvende",
-      image: "/images/features/heartsave-mypad-device.png",
+      image: "/images/features/heartsave-mypad-device.webp",
       imageAlt: "HeartSave myPAD defibrilatör cihazı",
       bullets: [
         [
@@ -148,7 +148,7 @@ export const features: {
     },
     {
       title: "Dayanıklı ve Her Zaman Hazır",
-      image: "/images/features/heartsave-mypad-field.png",
+      image: "/images/features/heartsave-mypad-field.webp",
       imageAlt: "HeartSave myPAD saha kullanımı",
       bullets: [
         [
@@ -186,7 +186,7 @@ export const features: {
     },
     {
       title: "Kullanıcı Dostu Tasarım",
-      image: "/images/features/heartsave-mypad-screen.png",
+      image: "/images/features/heartsave-mypad-screen.webp",
       imageAlt: "HeartSave myPAD renkli ekran arayüzü",
       bullets: [
         [

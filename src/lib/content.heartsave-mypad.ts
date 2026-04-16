@@ -25,7 +25,7 @@ export const heartsaveMypad = {
       "Ani kalp durması durumlarında kullanılmak üzere tasarlanan HeartSave myPAD, kalp ritmini analiz eder, gerektiğinde otomatik defibrilasyon uygular ve kullanıcıyı CPR uygulaması için adım adım yönlendirir.",
     ctaLabel: "İletişime Geç",
     ctaHref: "/iletisim",
-    imageSrc: "/images/product/heartsave-mypad-hero.png",
+    imageSrc: "/images/product/heartsave-mypad-hero.webp",
     imageAlt:
       "HeartSave myPAD otomatik eksternal defibrilatör (AED) — kompakt gövde, renkli ekran ve CPR geri bildirim sensörü",
   },
@@ -134,7 +134,7 @@ export const heartsaveMypad = {
         title: "Defibrilasyon Elektrotları",
         description:
           "HeartSave myPAD cihazında kullanılan SavePads PLUS elektrotları kalp ritmini analiz etmek ve defibrilasyon enerjisini hastaya güvenli şekilde iletmek için tasarlanmıştır.",
-        image: "/images/product/electrodes.png",
+        image: "/images/product/electrodes.webp",
         imageAlt: "SavePads PLUS defibrilasyon elektrotları",
         imageWidth: 513,
         imageHeight: 347,
@@ -150,7 +150,7 @@ export const heartsaveMypad = {
         title: "CPR Geri Bildirim Sensörü",
         description:
           "CPR sensörlü elektrotlar kalp masajı sırasında uygulanan bası hızını ve derinliğini ölçerek kullanıcıya doğru CPR uygulaması için geri bildirim sağlar.",
-        image: "/images/product/cpr-sensor.png",
+        image: "/images/product/cpr-sensor.webp",
         imageAlt: "CPR geri bildirim sensörlü defibrilasyon elektrodu",
         imageWidth: 521,
         imageHeight: 388,

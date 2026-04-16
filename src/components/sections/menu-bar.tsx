@@ -69,7 +69,7 @@ export function MenuBar() {
             aria-label={nav.brandLogoAlt}
           >
             <Image
-              src="/logos/primedic.png"
+              src="/logos/primedic.webp"
               alt="Primedic"
               width={316}
               height={66}

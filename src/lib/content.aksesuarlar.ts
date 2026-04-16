@@ -110,7 +110,7 @@ export const aksesuarlar = {
     actionLabel: "Teklif Alın",
     actionHref: "/iletisim",
     image: {
-      src: "/images/aksesuarlar/hero-device.png",
+      src: "/images/aksesuarlar/hero-device.webp",
       alt: "HeartSave myPAD ve aksesuar kiti",
     },
   },
@@ -119,37 +119,37 @@ export const aksesuarlar = {
     {
       id: "tam-otomatik",
       label: "Tam Otomatik",
-      image: { src: "/images/aksesuarlar/feature-01-otomatik.png", alt: "Tam Otomatik AED" },
+      image: { src: "/images/aksesuarlar/feature-01-otomatik.webp", alt: "Tam Otomatik AED" },
     },
     {
       id: "lcd-ekran",
       label: '4.3" LCD Ekran',
-      image: { src: "/images/aksesuarlar/feature-02-lcd.png", alt: "4.3 inç LCD ekran" },
+      image: { src: "/images/aksesuarlar/feature-02-lcd.webp", alt: "4.3 inç LCD ekran" },
     },
     {
       id: "wifi-iot",
       label: "Wifi & IOT Bağlantısı",
-      image: { src: "/images/aksesuarlar/feature-03-iot.png", alt: "Wifi ve IoT bağlantısı" },
+      image: { src: "/images/aksesuarlar/feature-03-iot.webp", alt: "Wifi ve IoT bağlantısı" },
     },
     {
       id: "batarya",
       label: "Uzun Ömürlü Batarya",
-      image: { src: "/images/aksesuarlar/feature-04-batarya.png", alt: "Uzun ömürlü batarya" },
+      image: { src: "/images/aksesuarlar/feature-04-batarya.webp", alt: "Uzun ömürlü batarya" },
     },
     {
       id: "elektrotlar",
       label: "Elektrotlar",
-      image: { src: "/images/aksesuarlar/feature-05-elektrot.png", alt: "Elektrotlar" },
+      image: { src: "/images/aksesuarlar/feature-05-elektrot.webp", alt: "Elektrotlar" },
     },
     {
       id: "ilk-yardim",
       label: "İlk Yardım Kiti",
-      image: { src: "/images/aksesuarlar/feature-06-ilk-yardim.png", alt: "İlk yardım kiti" },
+      image: { src: "/images/aksesuarlar/feature-06-ilk-yardim.webp", alt: "İlk yardım kiti" },
     },
     {
       id: "tasima-cantasi",
       label: "Taşıma Çantası",
-      image: { src: "/images/aksesuarlar/group-ek.png", alt: "Taşıma çantası" },
+      image: { src: "/images/aksesuarlar/group-ek.webp", alt: "Taşıma çantası" },
     },
   ] as ReadonlyArray<FeatureCard>,
 
@@ -178,14 +178,14 @@ export const aksesuarlar = {
       theme: "green",
       actionLabel: "Teklif Al",
       actionHref: "/iletisim",
-      defaultImage: { src: "/images/aksesuarlar/group-yedek.png", alt: "Yedek aksesuarlar" },
+      defaultImage: { src: "/images/aksesuarlar/group-yedek.webp", alt: "Yedek aksesuarlar" },
       rows: [
         {
           id: "elektrotlar",
           title: "Elektrotlar",
           subtitle: "Doğru Analiz ve Etkili Müdahale İçin Temel Bileşen",
           body: "HeartSave myPAD ile uyumlu yetişkin ve pediatrik elektrotlar, kalp ritmini doğru analiz ederek cihazın etkili müdahale yapabilmesi için kritik öneme sahiptir. Tek kullanımlık ve kolay yerleştirilebilir yapısı ile zaman kaybetmeden uygulamayı mümkün kılar.",
-          image: { src: "/images/aksesuarlar/row-elektrotlar.png", alt: "HeartSave myPAD elektrot seti" },
+          image: { src: "/images/aksesuarlar/row-elektrotlar.webp", alt: "HeartSave myPAD elektrot seti" },
           iconLabel: "Elektrot",
         },
         {
@@ -193,7 +193,7 @@ export const aksesuarlar = {
           title: "İlk Yardım Kiti",
           subtitle: "Müdahale Sürecini Destekleyen Yardımcı Ekipmanlar",
           body: "İlk yardım kiti; OED kullanımını destekleyen temel ekipmanları içererek müdahale sürecini daha güvenli ve etkili hale getirir. Kit içerisinde yer alan maske, eldiven, solunum örtüsü ve tek kullanımlık malzemeler; hastanın hazırlanması, elektrotların doğru şekilde uygulanması ve hijyenin sağlanması için kullanılır. Özellikle elektrot yerleşimi öncesinde göğüs bölgesinin hazırlanması, cihazın doğru analiz yapabilmesi açısından kritik öneme sahiptir. Tek kullanımlık olarak sunulan bu kit, cihaz ile birlikte 1 adet olarak sağlanır ve her kullanım sonrası yenilenmesi gereken bir yedek üründür.",
-          image: { src: "/images/aksesuarlar/row-ilk-yardim.png", alt: "HeartSave myPAD ilk yardım kiti" },
+          image: { src: "/images/aksesuarlar/row-ilk-yardim.webp", alt: "HeartSave myPAD ilk yardım kiti" },
           iconLabel: "İlk Yardım",
         },
         {
@@ -201,7 +201,7 @@ export const aksesuarlar = {
           title: "Batarya",
           subtitle: "Cihazın Kesintisiz Çalışmasını Sağlayan Güç Kaynağı",
           body: "Uzun ömürlü batarya, HeartSave myPAD cihazının her an kullanıma hazır kalmasını sağlar. 5 yıl bekleme ömrü ve yüksek kapasitesi ile acil durumda güç kesintisi yaşanmadan müdahaleye olanak tanır.",
-          image: { src: "/images/aksesuarlar/row-batarya.png", alt: "HeartSave myPAD batarya" },
+          image: { src: "/images/aksesuarlar/row-batarya.webp", alt: "HeartSave myPAD batarya" },
           iconLabel: "Batarya",
         },
       ],
@@ -213,14 +213,14 @@ export const aksesuarlar = {
       theme: "blue",
       actionLabel: "Teklif Al",
       actionHref: "/iletisim",
-      defaultImage: { src: "/images/aksesuarlar/group-akilli.png", alt: "Akıllı sistem bileşenleri" },
+      defaultImage: { src: "/images/aksesuarlar/group-akilli.webp", alt: "Akıllı sistem bileşenleri" },
       rows: [
         {
           id: "cpr-sensoru",
           title: "CPR Sensörü",
           subtitle: "CPR Kalitesini Analiz Eden Geri Bildirim Sistemi",
           body: "CPR sensörü, uygulanan göğüs kompresyonlarının derinliğini ve hızını gerçek zamanlı analiz eder. Kullanıcıya anlık sesli ve görsel geri bildirim sağlayarak yüksek kaliteli CPR uygulamasını destekler.",
-          image: { src: "/images/aksesuarlar/row-cpr.png", alt: "CPR sensörü" },
+          image: { src: "/images/aksesuarlar/row-cpr.webp", alt: "CPR sensörü" },
           iconLabel: "CPR",
         },
         {
@@ -228,7 +228,7 @@ export const aksesuarlar = {
           title: "IOT Bağlantısı",
           subtitle: "Uzaktan İzleme ve Yönetim Sağlayan Bağlantı Altyapısı",
           body: "IoT bağlantısı sayesinde cihazın durumu, bataryası ve konumu uzaktan izlenebilir. Kurumsal filo yönetimi için cihaz envanterini merkezi bir panelden takip etme imkanı sunar.",
-          image: { src: "/images/aksesuarlar/row-iot.png", alt: "IoT bağlantı paneli" },
+          image: { src: "/images/aksesuarlar/row-iot.webp", alt: "IoT bağlantı paneli" },
           iconLabel: "IoT",
         },
       ],
@@ -240,14 +240,14 @@ export const aksesuarlar = {
       theme: "orange",
       actionLabel: "Teklif Al",
       actionHref: "/iletisim",
-      defaultImage: { src: "/images/aksesuarlar/group-ek.png", alt: "Ek aksesuarlar" },
+      defaultImage: { src: "/images/aksesuarlar/group-ek.webp", alt: "Ek aksesuarlar" },
       rows: [
         {
           id: "kucuk-canta",
           title: "Küçük Cihaz Çantası",
           subtitle: "Cihazın Güvenli Taşınmasını Sağlayan Çantası",
           body: "Kompakt ve dayanıklı taşıma çantası, HeartSave myPAD ve temel aksesuarlarını darbe ve tozdan korur. Hafif yapısı ile saha kullanımı ve taşıma için idealdir.",
-          image: { src: "/images/aksesuarlar/group-ek.png", alt: "Küçük cihaz çantası" },
+          image: { src: "/images/aksesuarlar/group-ek.webp", alt: "Küçük cihaz çantası" },
           iconLabel: "Çanta",
         },
         {
@@ -255,7 +255,7 @@ export const aksesuarlar = {
           title: "Premium Duvar Aparatı",
           subtitle: "Cihazın Sabit Konumda Tutulmasını Sağlayan Duvar Aparatı",
           body: "Premium duvar aparatı, cihazın herkes tarafından hızlıca ulaşılabilir bir konumda sabitlenmesini sağlar. Aydınlatmalı ve sesli uyarı özellikleri ile görünürlüğü artırır.",
-          image: { src: "/images/aksesuarlar/group-ek.png", alt: "Premium duvar aparatı" },
+          image: { src: "/images/aksesuarlar/group-ek.webp", alt: "Premium duvar aparatı" },
           iconLabel: "Duvar",
         },
         {
@@ -263,7 +263,7 @@ export const aksesuarlar = {
           title: "ECO Duvar Aparatı",
           subtitle: "Cihazın Sabit Konumda Tutulmasını Sağlayan Duvar Aparatı",
           body: "ECO duvar aparatı, bütçe dostu sabitleme çözümü olarak cihazın uygun bir konumda hazır bekletilmesini sağlar. Hızlı montaj ve sade tasarımı ile her mekâna uyum sağlar.",
-          image: { src: "/images/aksesuarlar/group-ek.png", alt: "ECO duvar aparatı" },
+          image: { src: "/images/aksesuarlar/group-ek.webp", alt: "ECO duvar aparatı" },
           iconLabel: "ECO Duvar",
         },
       ],
@@ -275,14 +275,14 @@ export const aksesuarlar = {
       theme: "yellow",
       actionLabel: "Teklif Al",
       actionHref: "/iletisim",
-      defaultImage: { src: "/images/aksesuarlar/group-egitim.png", alt: "Eğitim kiti" },
+      defaultImage: { src: "/images/aksesuarlar/group-egitim.webp", alt: "Eğitim kiti" },
       rows: [
         {
           id: "egitim-cihazi",
           title: "Eğitim Cihazı ve Taşıma Seti",
           subtitle: "Eğitim Senaryolarının Uygulandığı Simülasyon Cihazı",
           body: "Eğitim cihazı, sahadaki HeartSave myPAD ile bire bir aynı kullanıcı deneyimini sunarak eğitim alanların gerçekçi senaryolarla pratik yapmasını sağlar. Taşıma seti ile birlikte sunulur.",
-          image: { src: "/images/aksesuarlar/group-egitim.png", alt: "Eğitim cihazı seti" },
+          image: { src: "/images/aksesuarlar/group-egitim.webp", alt: "Eğitim cihazı seti" },
           iconLabel: "Eğitim",
         },
         {
@@ -290,7 +290,7 @@ export const aksesuarlar = {
           title: "Eğitim Elektrot Seti",
           subtitle: "Eğitim İçin Tekrar Kullanılabilir Elektrot ve Bağlantı Seti",
           body: "Tekrar kullanılabilir eğitim elektrotları, gerçek ürünle aynı formda tasarlanmış olup eğitim seanslarında ekonomik ve sürdürülebilir kullanım sağlar.",
-          image: { src: "/images/aksesuarlar/group-egitim.png", alt: "Eğitim elektrot seti" },
+          image: { src: "/images/aksesuarlar/group-egitim.webp", alt: "Eğitim elektrot seti" },
           iconLabel: "Eğitim Elektrot",
         },
         {
@@ -298,7 +298,7 @@ export const aksesuarlar = {
           title: "Eğitim Yardımcı Elektrotlar",
           subtitle: "Eğitim Mankenleri Üzerinde Yerleşimi Sağlayan Elektrotlar",
           body: "Eğitim mankenleri üzerine yerleştirilen yardımcı elektrotlar, senaryo bazlı pratik yaparken kursiyerlerin doğru yerleşim tekniğini öğrenmesine yardımcı olur.",
-          image: { src: "/images/aksesuarlar/group-egitim.png", alt: "Eğitim yardımcı elektrotlar" },
+          image: { src: "/images/aksesuarlar/group-egitim.webp", alt: "Eğitim yardımcı elektrotlar" },
           iconLabel: "Yardımcı",
         },
         {
@@ -306,7 +306,7 @@ export const aksesuarlar = {
           title: "Eğitim Kumandası",
           subtitle: "Eğitim Senaryolarını Kontrol Etmeye Yönelik Uzaktan Kumanda",
           body: "Eğitmenin eğitim cihazını uzaktan yönetmesine olanak tanıyan kumanda, senaryoları anlık değiştirmek ve geri bildirim simüle etmek için tasarlanmıştır.",
-          image: { src: "/images/aksesuarlar/group-egitim.png", alt: "Eğitim kumandası" },
+          image: { src: "/images/aksesuarlar/group-egitim.webp", alt: "Eğitim kumandası" },
           iconLabel: "Kumanda",
         },
       ],

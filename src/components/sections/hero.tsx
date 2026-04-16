@@ -9,7 +9,7 @@ export function Hero() {
       {/* Figma hero backdrop (1920×1503) — object-cover so the natural dark bottom of the image
           always lives right above the white Bilgin Tıp band */}
       <Image
-        src="/images/hero/backdrop.png"
+        src="/images/hero/backdrop.webp"
         alt=""
         width={1920}
         height={1503}
@@ -35,7 +35,7 @@ export function Hero() {
 
           <div className="pointer-events-none relative z-0 -mt-16 flex w-full justify-center md:-mt-20 lg:-mt-28">
             <Image
-              src="/images/hero/composition.png"
+              src="/images/hero/composition.webp"
               alt="HeartSave myPAD — kompakt defibrilatör cihazı: LTE & Wifi bağlantı, CPR geri bildirimi, IP66 dayanıklılık, 1.1 kg, 5 yıl batarya, pediatrik mod"
               width={1248}
               height={1248}

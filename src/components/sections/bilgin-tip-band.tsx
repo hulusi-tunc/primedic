@@ -10,7 +10,7 @@ export function BilginTipBand() {
       <Container>
         <div className="flex items-center justify-center">
           <Image
-            src="/logos/bilgin-tip.png"
+            src="/logos/bilgin-tip.webp"
             alt="Bilgin Tıp Medikal — 35. yıl"
             width={345}
             height={199}
