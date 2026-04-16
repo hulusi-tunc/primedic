@@ -109,12 +109,6 @@ export default async function BlogPostPage({
                     </span>
                   ) : null}
                   <time dateTime={post.publishedAt}>{dateLabel}</time>
-                  {post.author?.name ? (
-                    <>
-                      <span aria-hidden>·</span>
-                      <span>{post.author.name}</span>
-                    </>
-                  ) : null}
                 </div>
 
                 <h1 className="mt-6 text-[36px] font-semibold leading-[1.15] md:text-[48px] lg:text-[56px] lg:leading-[1.1]">

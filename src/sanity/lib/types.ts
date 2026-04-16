@@ -3,14 +3,6 @@ import type { Image as SanityImage } from "sanity";
 
 export type CoverImage = SanityImage & { alt?: string };
 
-export type AuthorRef = {
-  name: string;
-  slug?: string;
-  role?: string;
-  avatar?: SanityImage;
-  bio?: string;
-};
-
 export type CategoryRef = {
   _id: string;
   title: string;
@@ -26,7 +18,6 @@ export type PostListItem = {
   featured?: boolean;
   coverImage: CoverImage;
   categories?: CategoryRef[];
-  author?: AuthorRef;
 };
 
 export type Post = PostListItem & {

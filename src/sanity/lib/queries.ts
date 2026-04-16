@@ -9,8 +9,7 @@ export const postsListQuery = groq`
     publishedAt,
     featured,
     coverImage { ..., "alt": coalesce(alt, "") },
-    "categories": categories[]->{ _id, title, "slug": slug.current },
-    "author": author->{ name, "slug": slug.current, avatar, role }
+    "categories": categories[]->{ _id, title, "slug": slug.current }
   }
 `;
 
@@ -23,8 +22,7 @@ export const featuredPostQuery = groq`
     excerpt,
     publishedAt,
     coverImage { ..., "alt": coalesce(alt, "") },
-    "categories": categories[]->{ _id, title, "slug": slug.current },
-    "author": author->{ name, "slug": slug.current, avatar, role }
+    "categories": categories[]->{ _id, title, "slug": slug.current }
   }
 `;
 
@@ -39,8 +37,7 @@ export const postBySlugQuery = groq`
     body,
     tags,
     seo,
-    "categories": categories[]->{ _id, title, "slug": slug.current },
-    "author": author->{ name, "slug": slug.current, avatar, role, bio }
+    "categories": categories[]->{ _id, title, "slug": slug.current }
   }
 `;
 

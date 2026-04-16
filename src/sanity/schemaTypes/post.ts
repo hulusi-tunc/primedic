@@ -41,12 +41,6 @@ export const post = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: "author",
-      title: "Yazar",
-      type: "reference",
-      to: [{ type: "author" }],
-    }),
-    defineField({
       name: "categories",
       title: "Kategoriler",
       type: "array",
@@ -97,17 +91,13 @@ export const post = defineType({
   preview: {
     select: {
       title: "title",
-      author: "author.name",
       media: "coverImage",
       date: "publishedAt",
     },
-    prepare({ title, author, media, date }) {
-      const subtitle = [
-        author,
-        date ? new Date(date).toLocaleDateString("tr-TR") : null,
-      ]
-        .filter(Boolean)
-        .join(" · ");
+    prepare({ title, media, date }) {
+      const subtitle = date
+        ? new Date(date).toLocaleDateString("tr-TR")
+        : "";
       return { title, subtitle, media };
     },
   },
