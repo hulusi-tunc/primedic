@@ -107,7 +107,8 @@ export default async function BlogPostPage({
       <MenuBar />
       <main>
         <article className="bg-white">
-          <header className="bg-white pt-[180px] pb-[72px] text-black md:pt-[220px] md:pb-[96px]">
+          <div aria-hidden className="h-[112px] bg-[#3c0a0a] md:h-[112px]" />
+          <header className="bg-white pt-[72px] pb-[72px] text-black md:pt-[108px] md:pb-[96px]">
             <Container>
               <div className="mx-auto max-w-[880px]">
                 <Link

@@ -54,7 +54,7 @@ export function MenuBar() {
       className={`fixed inset-x-0 top-0 z-50 transition-[background-color,backdrop-filter,box-shadow,height] duration-300 ${
         scrolled
           ? "bg-[#2a0505]/95 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.5)] backdrop-blur-md"
-          : "bg-[#3c0a0a]/90 backdrop-blur-sm"
+          : "bg-transparent"
       }`}
     >
       <Container width="wide">
