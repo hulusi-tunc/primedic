@@ -13,6 +13,7 @@ import {
 } from "@/sanity/lib/queries";
 import { urlForImage } from "@/sanity/lib/image";
 import type { Post } from "@/sanity/lib/types";
+import { dummyPosts } from "@/lib/dummy-posts";
 
 const SITE_URL = "https://primedic.com.tr";
 
@@ -20,7 +21,9 @@ export const revalidate = 60;
 
 export async function generateStaticParams() {
   const slugs = await client.fetch<string[]>(postSlugsQuery);
-  return (slugs ?? []).map((slug) => ({ slug }));
+  const sanity = (slugs ?? []).map((slug) => ({ slug }));
+  const dummy = dummyPosts.map((p) => ({ slug: p.slug }));
+  return [...sanity, ...dummy];
 }
 
 type Params = { slug: string };
@@ -31,16 +34,22 @@ export async function generateMetadata({
   params: Promise<Params>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const post = await client.fetch<Post | null>(postBySlugQuery, { slug });
+  const post =
+    (await client.fetch<Post | null>(postBySlugQuery, { slug })) ??
+    (dummyPosts.find((p) => p.slug === slug) as Post | undefined) ??
+    null;
   if (!post) return { title: "Yazı bulunamadı — Primedic Blog" };
 
   const canonical = `${SITE_URL}/blog/${post.slug}`;
   const title = post.seo?.title ?? `${post.title} | Primedic Blog`;
   const description =
     post.seo?.description ?? post.excerpt ?? undefined;
-  const ogImage = post.coverImage
-    ? urlForImage(post.coverImage).width(1200).height(630).url()
-    : undefined;
+  const dummyCover = (post as Post & { coverUrl?: string }).coverUrl;
+  const ogImage = dummyCover
+    ? `${SITE_URL}${dummyCover}`
+    : post.coverImage?.asset
+      ? urlForImage(post.coverImage).width(1200).height(630).url()
+      : undefined;
 
   return {
     title,
@@ -71,15 +80,21 @@ export default async function BlogPostPage({
   params: Promise<Params>;
 }) {
   const { slug } = await params;
-  const post = await client.fetch<Post | null>(
+  const sanityPost = await client.fetch<Post | null>(
     postBySlugQuery,
     { slug },
     { next: { revalidate: 60, tags: ["post", `post:${slug}`] } },
   );
+  const post =
+    sanityPost ??
+    (dummyPosts.find((p) => p.slug === slug) as Post | undefined) ??
+    null;
 
   if (!post) notFound();
 
-  const coverUrl = urlForImage(post.coverImage).width(2000).height(1125).url();
+  const coverUrl = (post as Post & { coverUrl?: string }).coverUrl
+    ? (post as Post & { coverUrl?: string }).coverUrl!
+    : urlForImage(post.coverImage).width(2000).height(1125).url();
   const dateLabel = new Date(post.publishedAt).toLocaleDateString("tr-TR", {
     year: "numeric",
     month: "long",
@@ -92,31 +107,31 @@ export default async function BlogPostPage({
       <MenuBar />
       <main>
         <article className="bg-white">
-          <header className="bg-gradient-to-b from-[#080e18] to-[#555c6a] pt-[180px] pb-[72px] text-white md:pt-[220px] md:pb-[96px]">
+          <header className="bg-white pt-[180px] pb-[72px] text-black md:pt-[220px] md:pb-[96px]">
             <Container>
               <div className="mx-auto max-w-[880px]">
                 <Link
                   href="/blog"
-                  className="inline-flex items-center gap-2 text-[14px] font-medium text-white/70 transition-colors hover:text-white"
+                  className="inline-flex items-center gap-2 text-[14px] font-medium text-black/50 transition-colors hover:text-black"
                 >
                   <span aria-hidden>←</span> Blog
                 </Link>
 
-                <div className="mt-6 flex flex-wrap items-center gap-3 text-[13px] text-white/75">
+                <div className="mt-6 flex flex-wrap items-center gap-3 text-[13px] text-black/55">
                   {category ? (
-                    <span className="inline-flex items-center rounded-[30px] border border-white/40 px-4 py-1 text-[12px] font-medium tracking-[0.2px] text-white">
+                    <span className="inline-flex items-center rounded-[30px] border border-[#b21c1c] px-4 py-1 text-[12px] font-medium tracking-[0.2px] text-[#b21c1c]">
                       {category.title}
                     </span>
                   ) : null}
                   <time dateTime={post.publishedAt}>{dateLabel}</time>
                 </div>
 
-                <h1 className="mt-6 text-[36px] font-semibold leading-[1.15] md:text-[48px] lg:text-[56px] lg:leading-[1.1]">
+                <h1 className="mt-6 text-black">
                   {post.title}
                 </h1>
 
                 {post.excerpt ? (
-                  <p className="mt-6 text-[18px] leading-[1.55] text-white/85 md:text-[22px]">
+                  <p className="text-lead mt-6 text-black/70">
                     {post.excerpt}
                   </p>
                 ) : null}

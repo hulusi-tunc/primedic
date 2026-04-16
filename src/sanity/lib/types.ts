@@ -17,6 +17,7 @@ export type PostListItem = {
   publishedAt: string;
   featured?: boolean;
   coverImage: CoverImage;
+  coverUrl?: string;
   categories?: CategoryRef[];
 };
 

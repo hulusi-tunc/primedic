@@ -6,6 +6,7 @@ import { PostGrid } from "@/components/blog/post-grid";
 import { client } from "@/sanity/lib/client";
 import { postsListQuery } from "@/sanity/lib/queries";
 import type { PostListItem } from "@/sanity/lib/types";
+import { dummyPosts } from "@/lib/dummy-posts";
 
 const SITE_URL = "https://primedic.com.tr";
 const CANONICAL = `${SITE_URL}/blog`;
@@ -41,11 +42,12 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogPage() {
-  const posts = await client.fetch<PostListItem[]>(
+  const sanityPosts = await client.fetch<PostListItem[]>(
     postsListQuery,
     {},
     { next: { revalidate: 60, tags: ["post"] } },
   );
+  const posts = sanityPosts && sanityPosts.length > 0 ? sanityPosts : dummyPosts;
 
   return (
     <>
@@ -55,7 +57,7 @@ export default async function BlogPage() {
           title={PAGE_COPY.heroTitle}
           description={PAGE_COPY.heroDescription}
         />
-        <PostGrid heading={PAGE_COPY.listHeading} posts={posts ?? []} />
+        <PostGrid heading={PAGE_COPY.listHeading} posts={posts} />
       </main>
       <Footer />
     </>

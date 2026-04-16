@@ -5,7 +5,9 @@ import type { PostListItem } from "@/sanity/lib/types";
 
 export function PostCard({ post }: { post: PostListItem }) {
   const category = post.categories?.[0];
-  const imageUrl = urlForImage(post.coverImage).width(1160).height(840).url();
+  const imageUrl = post.coverUrl
+    ? post.coverUrl
+    : urlForImage(post.coverImage).width(1160).height(840).url();
 
   return (
     <article className="group flex flex-col gap-5">
