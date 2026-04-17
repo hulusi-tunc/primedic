@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
+import { Reveal } from "@/components/ui/reveal";
 import { hakkimizda } from "@/lib/content.hakkimizda";
 
 export function HakkimizdaHero() {
@@ -32,17 +33,21 @@ export function HakkimizdaHero() {
       <Container width="wide">
         <div className="grid gap-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:items-center lg:gap-20">
           <div className="flex flex-col items-start">
-            <h1 className="font-bold tracking-[0.25px] text-white">
-              <span className="block">{titleLine1}</span>
-              <span className="block">{titleLine2}</span>
-            </h1>
+            <Reveal delay={0.1} y={24}>
+              <h1 className="font-bold tracking-[0.25px] text-white">
+                <span className="block">{titleLine1}</span>
+                <span className="block">{titleLine2}</span>
+              </h1>
+            </Reveal>
 
-            <Link
-              href={actionHref}
-              className="mt-10 inline-flex h-[56px] items-center justify-center rounded-[24px] border-2 border-[#b21c1c] bg-white px-8 text-[20px] font-medium leading-none text-[#b21c1c] transition-colors hover:bg-[#b21c1c] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 md:text-[24px]"
-            >
-              {actionLabel}
-            </Link>
+            <Reveal delay={0.3} y={16}>
+              <Link
+                href={actionHref}
+                className="mt-10 inline-flex h-[56px] items-center justify-center rounded-[24px] border-2 border-[#b21c1c] bg-white px-8 text-[20px] font-medium leading-none text-[#b21c1c] transition-colors hover:bg-[#b21c1c] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 md:text-[24px]"
+              >
+                {actionLabel}
+              </Link>
+            </Reveal>
           </div>
 
           <div className="grid h-[460px] grid-cols-3 grid-rows-2 gap-4 md:h-[560px] md:gap-5">

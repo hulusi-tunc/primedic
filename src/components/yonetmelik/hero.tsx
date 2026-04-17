@@ -1,4 +1,5 @@
 import { Container } from "@/components/ui/container";
+import { Reveal } from "@/components/ui/reveal";
 import { yonetmelik } from "@/lib/content.yonetmelik";
 
 export function YonetmelikHero() {
@@ -8,11 +9,13 @@ export function YonetmelikHero() {
     <section className="relative isolate overflow-hidden bg-gradient-to-b from-[#080e18] to-[#555c6a]">
       <Container width="wide">
         <div className="flex min-h-[640px] flex-col justify-end pt-[200px] pb-[120px] md:pt-[260px] md:pb-[160px] lg:min-h-[862px]">
-          <h1 className="max-w-[1320px] font-bold uppercase text-white">
-            {title}
-          </h1>
+          <Reveal delay={0.1} y={28}>
+            <h1 className="max-w-[1320px] font-bold uppercase text-white">
+              {title}
+            </h1>
+          </Reveal>
 
-          <p className="text-lead-lg mt-12 max-w-[1500px] font-light tracking-[1.4px] text-white md:mt-16 md:tracking-[1.6px] lg:tracking-[1.8px]">
+          <Reveal delay={0.25} y={24} className="text-lead-lg mt-12 max-w-[1500px] font-light tracking-[1.4px] text-white md:mt-16 md:tracking-[1.6px] lg:tracking-[1.8px]">
             <a
               href={linkHref}
               target="_blank"
@@ -22,7 +25,7 @@ export function YonetmelikHero() {
               {linkText}
             </a>
             <span>{bodyText}</span>
-          </p>
+          </Reveal>
         </div>
       </Container>
     </section>

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
+import { Reveal } from "@/components/ui/reveal";
 import { heartsaveMypad } from "@/lib/content.heartsave-mypad";
 
 export function ProductHero() {
@@ -20,22 +21,28 @@ export function ProductHero() {
 
       <Container width="wide">
         <div className="mx-auto max-w-[720px] pt-[180px] pb-[60px] text-center md:pt-[220px] lg:mx-0 lg:ml-[6%] xl:ml-[10%]">
-          <h1 className="font-bold tracking-[0.26px] text-white">
-            {brand}
-          </h1>
+          <Reveal delay={0.1} y={24}>
+            <h1 className="font-bold tracking-[0.26px] text-white">
+              {brand}
+            </h1>
+          </Reveal>
 
-          <p className="text-tagline mt-10 text-white">
-            {tagline}
-          </p>
+          <Reveal delay={0.25} y={24}>
+            <p className="text-tagline mt-10 text-white">
+              {tagline}
+            </p>
+          </Reveal>
 
-          <div className="mt-12">
-            <Link
-              href={ctaHref}
-              className="inline-flex h-[56px] w-[198px] items-center justify-center rounded-[24px] border-2 border-[#b21c1c] bg-white text-[20px] font-medium text-[#b21c1c] transition-colors hover:bg-[#b21c1c] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#3c0a0a] md:text-[24px]"
-            >
-              {ctaLabel}
-            </Link>
-          </div>
+          <Reveal delay={0.4} y={16}>
+            <div className="mt-12">
+              <Link
+                href={ctaHref}
+                className="inline-flex h-[56px] w-[198px] items-center justify-center rounded-[24px] border-2 border-[#b21c1c] bg-white text-[20px] font-medium text-[#b21c1c] transition-colors hover:bg-[#b21c1c] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#3c0a0a] md:text-[24px]"
+              >
+                {ctaLabel}
+              </Link>
+            </div>
+          </Reveal>
         </div>
       </Container>
 

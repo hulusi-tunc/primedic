@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { Container } from "@/components/ui/container";
+import { Reveal } from "@/components/ui/reveal";
 import { iletisim } from "@/lib/content.iletisim";
 
 type FormState = {
@@ -50,9 +51,11 @@ export function IletisimContactForm() {
       <Container width="wide">
         <div className="grid gap-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:items-start lg:gap-24">
           <div className="flex flex-col">
-            <h2 className="text-[34px] font-bold leading-[1.15] tracking-[0.2px] text-black md:text-[42px] lg:text-[48px] lg:leading-[60px]">
-              {heading}
-            </h2>
+            <Reveal y={24}>
+              <h2 className="text-[34px] font-bold leading-[1.15] tracking-[0.2px] text-black md:text-[42px] lg:text-[48px] lg:leading-[60px]">
+                {heading}
+              </h2>
+            </Reveal>
 
             <div className="mt-8 space-y-4 text-[18px] font-normal leading-[1.55] text-black md:text-[22px] lg:text-[24px] lg:leading-[40px]">
               {paragraphs.map((p, i) => (

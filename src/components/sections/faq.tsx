@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Container } from "@/components/ui/container";
+import { Reveal } from "@/components/ui/reveal";
 import { faq } from "@/lib/content";
 import { cn } from "@/lib/cn";
 
@@ -18,12 +19,14 @@ export function FAQ() {
     >
       <Container width="wide">
         <div className="mx-auto max-w-[1408px] px-4 md:px-[112px]">
-          <h2
-            id="faq-title"
-            className="max-w-[738px] font-bold tracking-[-0.5px] text-black"
-          >
-            {faq.title}
-          </h2>
+          <Reveal y={24}>
+            <h2
+              id="faq-title"
+              className="max-w-[738px] font-bold tracking-[-0.5px] text-black"
+            >
+              {faq.title}
+            </h2>
+          </Reveal>
 
           <ul className="mt-10 flex flex-col gap-4">
             {faq.items.map((item, i) => {

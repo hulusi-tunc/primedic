@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useRef, useState } from "react";
 import { Container } from "@/components/ui/container";
+import { Reveal } from "@/components/ui/reveal";
 import {
   accessoryThemes,
   aksesuarlar,
@@ -46,7 +47,7 @@ export function AksesuarAccessories() {
   return (
     <section className="bg-white py-[96px] md:py-[140px]">
       <Container width="wide">
-        <header className="mx-auto flex max-w-[952px] flex-col items-center gap-4 text-center">
+        <Reveal as="header" y={24} className="mx-auto flex max-w-[952px] flex-col items-center gap-4 text-center">
           <span className="inline-flex h-[45px] items-center justify-center rounded-[38px] border border-[#9f2322] bg-white px-6 text-[20px] font-semibold leading-none text-black md:text-[24px]">
             {section.pretitle}
           </span>
@@ -54,7 +55,7 @@ export function AksesuarAccessories() {
             {section.title}
           </h2>
           <span aria-hidden className="h-[5px] w-[300px] max-w-[60%] bg-[#9f2322]" />
-        </header>
+        </Reveal>
 
         {/* Chip slider */}
         <div

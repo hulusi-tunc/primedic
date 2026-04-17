@@ -1,4 +1,5 @@
 import { Container } from "@/components/ui/container";
+import { Reveal } from "@/components/ui/reveal";
 import { iletisim } from "@/lib/content.iletisim";
 
 export function IletisimHero() {
@@ -27,16 +28,20 @@ export function IletisimHero() {
 
       <Container width="wide">
         <div className="mx-auto flex max-w-[780px] flex-col items-center gap-8 text-center text-white">
-          <h1 className="font-normal tracking-[0.2px]">
-            {title}
-          </h1>
-          <p className="text-lead text-white/90">
-            {description.map((line, i) => (
-              <span key={i} className="block">
-                {line}
-              </span>
-            ))}
-          </p>
+          <Reveal delay={0.1} y={24}>
+            <h1 className="font-normal tracking-[0.2px]">
+              {title}
+            </h1>
+          </Reveal>
+          <Reveal delay={0.25} y={20}>
+            <p className="text-lead text-white/90">
+              {description.map((line, i) => (
+                <span key={i} className="block">
+                  {line}
+                </span>
+              ))}
+            </p>
+          </Reveal>
         </div>
       </Container>
     </section>

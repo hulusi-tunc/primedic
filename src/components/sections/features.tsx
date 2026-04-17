@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
+import { Reveal } from "@/components/ui/reveal";
 import { features, type FeatureRow, type SpecBadge } from "@/lib/content";
 import { cn } from "@/lib/cn";
 
@@ -17,23 +18,31 @@ export function Features() {
       <Container width="wide">
         <div className="mx-auto flex max-w-[1321px] flex-col">
           <div className="flex flex-col items-center text-center">
-            <span className="inline-flex h-[45px] items-center justify-center rounded-[38px] border border-black bg-white px-8 text-[16px] font-bold text-black md:text-[24px]">
-              {features.pretitle}
-            </span>
-            <h2
-              id="features-title"
-              className="mt-10 max-w-[672px] text-white"
-            >
-              {features.title}
-            </h2>
-            <p className="text-lead-lg mt-4 max-w-[1315px] text-white">
-              {features.description}
-            </p>
+            <Reveal y={20}>
+              <span className="inline-flex h-[45px] items-center justify-center rounded-[38px] border border-black bg-white px-8 text-[16px] font-bold text-black md:text-[24px]">
+                {features.pretitle}
+              </span>
+            </Reveal>
+            <Reveal delay={0.1} y={24}>
+              <h2
+                id="features-title"
+                className="mt-10 max-w-[672px] text-white"
+              >
+                {features.title}
+              </h2>
+            </Reveal>
+            <Reveal delay={0.2} y={20}>
+              <p className="text-lead-lg mt-4 max-w-[1315px] text-white">
+                {features.description}
+              </p>
+            </Reveal>
           </div>
 
           <div className="mt-16 flex flex-col gap-10">
-            {features.rows.map((row) => (
-              <FeatureCard key={row.title} row={row} />
+            {features.rows.map((row, i) => (
+              <Reveal key={row.title} delay={i * 0.1} y={36}>
+                <FeatureCard row={row} />
+              </Reveal>
             ))}
           </div>
         </div>

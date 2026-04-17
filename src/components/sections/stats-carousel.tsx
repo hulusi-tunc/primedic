@@ -2,6 +2,7 @@
 
 import { useState, useCallback } from "react";
 import { Container } from "@/components/ui/container";
+import { Reveal } from "@/components/ui/reveal";
 import { stats } from "@/lib/content";
 
 export function StatsCarousel() {
@@ -26,15 +27,17 @@ export function StatsCarousel() {
       aria-labelledby="stats-title"
     >
       <Container width="wide">
-        <h2
-          id="stats-title"
-          className="mx-auto text-center text-white"
-        >
-          <span className="block">Kalp Durmasında</span>
-          <span className="block">Erken Müdahalenin Önemi</span>
-        </h2>
+        <Reveal y={24}>
+          <h2
+            id="stats-title"
+            className="mx-auto text-center text-white"
+          >
+            <span className="block">Kalp Durmasında</span>
+            <span className="block">Erken Müdahalenin Önemi</span>
+          </h2>
+        </Reveal>
 
-        <div className="relative mx-auto mt-14 max-w-[1324px]">
+        <Reveal delay={0.15} y={32} className="relative mx-auto mt-14 max-w-[1324px]">
           {/* Outer white frame — Figma 1:2197 */}
           <div className="rounded-[20px] border-[1.2px] border-white bg-white p-6 md:p-10 backdrop-blur-[8px] shadow-[0_20px_60px_-30px_rgba(0,0,0,0.35)]">
             {/* Inner card — Figma 1:2198 (subtle gray gradient + dark border) */}
@@ -118,7 +121,7 @@ export function StatsCarousel() {
           >
             <ArrowRight />
           </button>
-        </div>
+        </Reveal>
       </Container>
     </section>
   );
