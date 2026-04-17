@@ -103,7 +103,7 @@ export const hakkimizda = {
       alt: "PRIMEDIC — defibrilasyonda global güç, saha ekibi",
     },
     quote: {
-      title: "Defibrilasyonda Güven ve Deneyim",
+      title: "Güven, Deneyim ve Teknoloji",
       body: "PRIMEDIC, 50 yılı aşkın deneyimiyle yalnızca defibrilasyon teknolojilerine odaklanan global bir markadır. Alman mühendisliği ile geliştirilen çözümleri, ani kalp durmalarında hızlı ve güvenilir müdahale sağlar. Yuwell Medical çatısı altında faaliyet gösteren PRIMEDIC, güçlü Ar-Ge ve üretim altyapısı ile acil müdahale teknolojilerinde sürekli inovasyon sunar.",
     },
   },

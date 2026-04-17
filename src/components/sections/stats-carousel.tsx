@@ -2,7 +2,6 @@
 
 import { useState, useCallback } from "react";
 import { Container } from "@/components/ui/container";
-import { Reveal } from "@/components/ui/reveal";
 import { getStats } from "@/lib/get-content";
 import { useLocale } from "next-intl";
 
@@ -30,20 +29,16 @@ export function StatsCarousel() {
       aria-labelledby="stats-title"
     >
       <Container width="wide">
-        <Reveal y={24}>
-          <h2
-            id="stats-title"
-            className="mx-auto text-center text-white"
-          >
-            <span className="block">Kalp Durmasında</span>
-            <span className="block">Erken Müdahalenin Önemi</span>
-          </h2>
-        </Reveal>
+        <h2
+          id="stats-title"
+          className="mx-auto text-center text-white"
+        >
+          <span className="block">Kalp Durmasında</span>
+          <span className="block">Erken Müdahalenin Önemi</span>
+        </h2>
 
-        <Reveal delay={0.15} y={32} className="relative mx-auto mt-14 max-w-[1324px]">
-          {/* Outer white frame — Figma 1:2197 */}
+        <div className="relative mx-auto mt-14 max-w-[1324px]">
           <div className="rounded-[20px] border-[1.2px] border-white bg-white p-6 md:p-10 backdrop-blur-[8px] shadow-[0_20px_60px_-30px_rgba(0,0,0,0.35)]">
-            {/* Inner card — Figma 1:2198 (subtle gray gradient + dark border) */}
             <div
               className="relative flex flex-col items-center overflow-hidden rounded-[20px] border border-[#272834] p-6 md:p-10"
               style={{
@@ -124,7 +119,7 @@ export function StatsCarousel() {
           >
             <ArrowRight />
           </button>
-        </Reveal>
+        </div>
       </Container>
     </section>
   );

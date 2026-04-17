@@ -89,7 +89,7 @@ export function LanguageSwitcher() {
         <ul
           role="listbox"
           aria-label="Languages"
-          className="absolute bottom-full right-0 mb-2 min-w-[180px] overflow-hidden rounded-[14px] border border-white/15 bg-[#2a0505] p-1 shadow-2xl md:left-auto"
+          className="absolute bottom-full left-0 mb-2 min-w-[180px] overflow-hidden rounded-[14px] border border-white/15 bg-[#2a0505] p-1 shadow-2xl"
         >
           {languages.map((lang) => {
             const isActive = lang.code === locale;

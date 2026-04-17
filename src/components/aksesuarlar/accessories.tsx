@@ -161,6 +161,19 @@ function GroupCard({ group, openRowId, onToggle, registerRef }: GroupCardProps) 
             })}
           </ul>
 
+          {openRow && (
+            <div className="relative mt-2 aspect-[4/3] w-full overflow-hidden rounded-[12px] md:hidden">
+              <Image
+                key={openRow.image.src}
+                src={openRow.image.src}
+                alt={openRow.image.alt}
+                fill
+                sizes="(max-width: 768px) 90vw, 0px"
+                className="object-contain object-center"
+              />
+            </div>
+          )}
+
           <div className="pt-2">
             <Link
               href={group.actionHref}

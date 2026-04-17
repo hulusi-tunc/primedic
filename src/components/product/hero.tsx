@@ -50,15 +50,15 @@ export async function ProductHero() {
         </div>
       </Container>
 
-      <div className="relative mr-auto max-w-[480px] pr-6 lg:absolute lg:bottom-0 lg:right-0 lg:mr-0 lg:max-w-none lg:p-0">
+      <div className="relative mx-auto max-w-none px-0 lg:absolute lg:bottom-0 lg:right-0 lg:p-0">
         <Image
           src={imageSrc}
           alt={imageAlt}
           width={968}
           height={864}
           priority
-          sizes="(min-width: 1280px) 760px, (min-width: 1024px) 640px, (min-width: 480px) 480px, 92vw"
-          className="h-auto w-full object-contain lg:w-[640px] xl:w-[760px] 2xl:w-[820px]"
+          sizes="(min-width: 1280px) 860px, (min-width: 1024px) 720px, 100vw"
+          className="h-auto w-full object-contain lg:w-[720px] xl:w-[860px] 2xl:w-[940px]"
         />
       </div>
     </section>

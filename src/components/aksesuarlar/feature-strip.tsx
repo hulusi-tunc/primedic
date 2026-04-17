@@ -173,7 +173,7 @@ export function AksesuarFeatureStrip() {
 
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[#3d4452] to-transparent opacity-80"
+        className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[#3d4452] to-transparent opacity-80 hidden md:block"
       />
 
       <div
