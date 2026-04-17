@@ -33,8 +33,7 @@ export function StatsCarousel() {
           id="stats-title"
           className="mx-auto text-center text-white"
         >
-          <span className="block">Kalp Durmasında</span>
-          <span className="block">Erken Müdahalenin Önemi</span>
+          {stats.title}
         </h2>
 
         <div className="relative mx-auto mt-14 max-w-[1324px]">
@@ -68,7 +67,7 @@ export function StatsCarousel() {
               <div
                 className="mt-8 flex gap-4"
                 role="tablist"
-                aria-label="İstatistik kaynakları"
+                aria-label={locale === "en" ? "Statistic sources" : "İstatistik kaynakları"}
               >
                 {stats.slides.map((_, i) => {
                   const isActive = i === index;
@@ -78,7 +77,7 @@ export function StatsCarousel() {
                       type="button"
                       role="tab"
                       aria-selected={isActive}
-                      aria-label={`Slayt ${i + 1}`}
+                      aria-label={`${locale === "en" ? "Slide" : "Slayt"} ${i + 1}`}
                       onClick={() => setIndex(i)}
                       className="flex h-6 w-6 items-center justify-center"
                     >
@@ -106,7 +105,7 @@ export function StatsCarousel() {
           <button
             type="button"
             onClick={prev}
-            aria-label="Önceki"
+            aria-label={locale === "en" ? "Previous" : "Önceki"}
             className="absolute left-[-28px] top-1/2 hidden h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border-[3px] border-white bg-black text-white shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] transition-transform hover:scale-105 md:flex"
           >
             <ArrowLeft />
@@ -114,7 +113,7 @@ export function StatsCarousel() {
           <button
             type="button"
             onClick={next}
-            aria-label="Sonraki"
+            aria-label={locale === "en" ? "Next" : "Sonraki"}
             className="absolute right-[-28px] top-1/2 hidden h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border-[3px] border-white bg-black text-white shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] transition-transform hover:scale-105 md:flex"
           >
             <ArrowRight />
