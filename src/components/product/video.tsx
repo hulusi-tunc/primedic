@@ -3,9 +3,13 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
-import { heartsaveMypad } from "@/lib/content.heartsave-mypad";
+import { getHeartsaveMypad } from "@/lib/get-content";
+import { useLocale } from "next-intl";
 
 export function ProductVideo() {
+  const locale = useLocale();
+  const heartsaveMypad = getHeartsaveMypad(locale);
+
   const { youtubeId, heading, description } = heartsaveMypad.video;
   const [playing, setPlaying] = useState(false);
   const thumbnailUrl = `https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg`;

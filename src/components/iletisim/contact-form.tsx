@@ -3,7 +3,8 @@
 import { useState, type FormEvent } from "react";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
-import { iletisim } from "@/lib/content.iletisim";
+import { getIletisim } from "@/lib/get-content";
+import { useLocale } from "next-intl";
 
 type FormState = {
   firstName: string;
@@ -22,6 +23,8 @@ const initial: FormState = {
 };
 
 export function IletisimContactForm() {
+  const locale = useLocale();
+  const iletisim = getIletisim(locale);
   const { heading, paragraphs, contact, fields, submitLabel } = iletisim.form;
   const [values, setValues] = useState<FormState>(initial);
   const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");

@@ -1,8 +1,11 @@
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
-import { iletisim } from "@/lib/content.iletisim";
+import { getIletisim } from "@/lib/get-content";
+import { getLocale } from "next-intl/server";
 
-export function IletisimHero() {
+export async function IletisimHero() {
+  const locale = await getLocale();
+  const iletisim = getIletisim(locale);
   const { title, description } = iletisim.hero;
 
   return (

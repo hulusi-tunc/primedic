@@ -1,9 +1,13 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { SpecIcon } from "@/components/product/spec-icon";
-import { heartsaveMypad } from "@/lib/content.heartsave-mypad";
+import { getHeartsaveMypad } from "@/lib/get-content";
+import { getLocale } from "next-intl/server";
 
-export function ProductDetails() {
+export async function ProductDetails() {
+  const locale = await getLocale();
+  const heartsaveMypad = getHeartsaveMypad(locale);
+
   const { heading, description, cards } = heartsaveMypad.details;
 
   return (

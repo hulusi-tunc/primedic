@@ -1,8 +1,12 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
-import { heartsaveMypad } from "@/lib/content.heartsave-mypad";
+import { getHeartsaveMypad } from "@/lib/get-content";
+import { getLocale } from "next-intl/server";
 
-export function ProductCTA() {
+export async function ProductCTA() {
+  const locale = await getLocale();
+  const heartsaveMypad = getHeartsaveMypad(locale);
+
   const { pretitle, title, description, actionLabel, actionHref } =
     heartsaveMypad.cta;
 

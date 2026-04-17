@@ -1,8 +1,12 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
-import { heartsaveMypad } from "@/lib/content.heartsave-mypad";
+import { getHeartsaveMypad } from "@/lib/get-content";
+import { getLocale } from "next-intl/server";
 
-export function ProductConnectivity() {
+export async function ProductConnectivity() {
+  const locale = await getLocale();
+  const heartsaveMypad = getHeartsaveMypad(locale);
+
   const { title, description, items } = heartsaveMypad.connectivity;
 
   return (

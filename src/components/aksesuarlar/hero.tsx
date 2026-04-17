@@ -2,10 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
-import { aksesuarlar } from "@/lib/content.aksesuarlar";
+import { getAksesuarlar } from "@/lib/get-content";
+import { getLocale } from "next-intl/server";
 import { AksesuarFeatureStrip } from "./feature-strip";
 
-export function AksesuarHero() {
+export async function AksesuarHero() {
+  const locale = await getLocale();
+  const aksesuarlar = getAksesuarlar(locale);
   const { hero } = aksesuarlar;
 
   return (

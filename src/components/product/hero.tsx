@@ -2,9 +2,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
-import { heartsaveMypad } from "@/lib/content.heartsave-mypad";
+import { getHeartsaveMypad } from "@/lib/get-content";
+import { getLocale } from "next-intl/server";
 
-export function ProductHero() {
+export async function ProductHero() {
+  const locale = await getLocale();
+  const heartsaveMypad = getHeartsaveMypad(locale);
+
   const { brand, tagline, ctaLabel, ctaHref, imageSrc, imageAlt } =
     heartsaveMypad.hero;
 

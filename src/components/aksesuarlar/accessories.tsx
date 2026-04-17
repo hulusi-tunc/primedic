@@ -7,14 +7,17 @@ import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 import {
   accessoryThemes,
-  aksesuarlar,
   type AccessoryGroup,
   type AccessoryRow,
 } from "@/lib/content.aksesuarlar";
+import { getAksesuarlar } from "@/lib/get-content";
+import { useLocale } from "next-intl";
 
 type OpenMap = Record<string, string | null>;
 
 export function AksesuarAccessories() {
+  const locale = useLocale();
+  const aksesuarlar = getAksesuarlar(locale);
   const { section, categories, groups } = aksesuarlar;
   const [openRows, setOpenRows] = useState<OpenMap>(() =>
     Object.fromEntries(groups.map((g) => [g.id, null])),

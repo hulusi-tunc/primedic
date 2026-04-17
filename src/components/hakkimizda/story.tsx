@@ -1,8 +1,11 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
-import { hakkimizda } from "@/lib/content.hakkimizda";
+import { getHakkimizda } from "@/lib/get-content";
+import { getLocale } from "next-intl/server";
 
-export function HakkimizdaStory() {
+export async function HakkimizdaStory() {
+  const locale = await getLocale();
+  const hakkimizda = getHakkimizda(locale);
   const { eyebrow, paragraphs, image, quote } = hakkimizda.story;
 
   return (

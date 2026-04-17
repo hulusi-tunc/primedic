@@ -2,9 +2,13 @@ import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { Pretitle } from "@/components/ui/pretitle";
 import { Reveal } from "@/components/ui/reveal";
-import { hero } from "@/lib/content";
+import { getHero } from "@/lib/get-content";
+import { getLocale } from "next-intl/server";
 
-export function Hero() {
+export async function Hero() {
+  const locale = await getLocale();
+  const hero = getHero(locale);
+
   return (
     <section className="relative isolate overflow-hidden bg-[#1a0303] pt-[160px] pb-[80px] md:pt-[200px] md:pb-[120px]">
       <Image

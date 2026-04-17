@@ -2,10 +2,14 @@ import { Container } from "@/components/ui/container";
 import { Pretitle } from "@/components/ui/pretitle";
 import { ButtonLink } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
-import { useCases } from "@/lib/content";
+import { getUseCases } from "@/lib/get-content";
+import { getLocale } from "next-intl/server";
 import { UseCaseIcon } from "@/components/ui/use-case-icon";
 
-export function UseCases() {
+export async function UseCases() {
+  const locale = await getLocale();
+  const useCases = getUseCases(locale);
+
   return (
     <section
       id="yonetmelik"

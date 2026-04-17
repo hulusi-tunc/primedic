@@ -1,22 +1,28 @@
 "use client";
 
+import { useLocale } from "next-intl";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 type Language = {
-  code: string;
+  code: "tr" | "en";
   label: string;
   flag: string;
 };
 
 const languages: ReadonlyArray<Language> = [
-  { code: "TR", label: "Türkçe", flag: "🇹🇷" },
-  { code: "EN", label: "English", flag: "🇬🇧" },
+  { code: "tr", label: "Türkçe", flag: "🇹🇷" },
+  { code: "en", label: "English", flag: "🇬🇧" },
 ];
 
 export function LanguageSwitcher() {
+  const locale = useLocale();
+  const pathname = usePathname();
+  const router = useRouter();
   const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState<Language>(languages[0]);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const selected = languages.find((l) => l.code === locale) ?? languages[0];
 
   useEffect(() => {
     if (!open) return;
@@ -34,6 +40,19 @@ export function LanguageSwitcher() {
     };
   }, [open]);
 
+  const switchLocale = (lang: Language) => {
+    setOpen(false);
+    if (lang.code === locale) return;
+
+    const segments = pathname.split("/");
+    if (segments[1] === "tr" || segments[1] === "en") {
+      segments[1] = lang.code;
+    } else {
+      segments.splice(1, 0, lang.code);
+    }
+    router.push(segments.join("/") || "/");
+  };
+
   return (
     <div ref={containerRef} className="relative">
       <button
@@ -41,13 +60,13 @@ export function LanguageSwitcher() {
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="listbox"
         aria-expanded={open}
-        aria-label={`Dil seçimi: ${selected.label}`}
+        aria-label={`Language: ${selected.label}`}
         className="flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-3 py-2 text-[14px] text-white/90 transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
       >
         <span aria-hidden className="text-[16px] leading-none">
           {selected.flag}
         </span>
-        <span className="font-medium">{selected.code}</span>
+        <span className="font-medium">{selected.code.toUpperCase()}</span>
         <svg
           viewBox="0 0 12 12"
           aria-hidden
@@ -69,21 +88,18 @@ export function LanguageSwitcher() {
       {open && (
         <ul
           role="listbox"
-          aria-label="Dil listesi"
+          aria-label="Languages"
           className="absolute bottom-full right-0 mb-2 min-w-[180px] overflow-hidden rounded-[14px] border border-white/15 bg-[#2a0505] p-1 shadow-2xl md:left-auto"
         >
           {languages.map((lang) => {
-            const isActive = lang.code === selected.code;
+            const isActive = lang.code === locale;
             return (
               <li key={lang.code} role="none">
                 <button
                   type="button"
                   role="option"
                   aria-selected={isActive}
-                  onClick={() => {
-                    setSelected(lang);
-                    setOpen(false);
-                  }}
+                  onClick={() => switchLocale(lang)}
                   className={`flex w-full items-center gap-3 rounded-[10px] px-3 py-2.5 text-left text-[14px] transition-colors hover:bg-white/10 focus-visible:bg-white/10 focus-visible:outline-none ${
                     isActive
                       ? "bg-white/10 font-semibold text-white"
@@ -95,7 +111,7 @@ export function LanguageSwitcher() {
                   </span>
                   <span className="flex-1">{lang.label}</span>
                   <span className="text-[12px] uppercase tracking-wider text-white/50">
-                    {lang.code}
+                    {lang.code.toUpperCase()}
                   </span>
                 </button>
               </li>

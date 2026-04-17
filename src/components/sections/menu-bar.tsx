@@ -5,7 +5,9 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Container } from "@/components/ui/container";
-import { nav, type NavItem } from "@/lib/content";
+import { type NavItem } from "@/lib/content";
+import { getNav } from "@/lib/get-content";
+import { useLocale } from "next-intl";
 
 const linkBase =
   "text-[17px] transition-colors hover:text-white focus-visible:text-white focus-visible:outline-none";
@@ -24,6 +26,8 @@ function isItemActive(item: NavItem, pathname: string): boolean {
 }
 
 export function MenuBar() {
+  const locale = useLocale();
+  const nav = getNav(locale);
   const pathname = usePathname() ?? "/";
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);

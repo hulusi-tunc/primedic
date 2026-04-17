@@ -3,10 +3,13 @@
 import { useState } from "react";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
-import { faq } from "@/lib/content";
+import { getFaq } from "@/lib/get-content";
+import { useLocale } from "next-intl";
 import { cn } from "@/lib/cn";
 
 export function FAQ() {
+  const locale = useLocale();
+  const faqData = getFaq(locale);
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const toggle = (i: number) => setOpenIndex((current) => (current === i ? null : i));
@@ -24,12 +27,12 @@ export function FAQ() {
               id="faq-title"
               className="max-w-[738px] font-bold tracking-[-0.5px] text-black"
             >
-              {faq.title}
+              {faqData.title}
             </h2>
           </Reveal>
 
           <ul className="mt-10 flex flex-col gap-4">
-            {faq.items.map((item, i) => {
+            {faqData.items.map((item, i) => {
               const isOpen = openIndex === i;
               const panelId = `faq-panel-${i}`;
               const btnId = `faq-button-${i}`;

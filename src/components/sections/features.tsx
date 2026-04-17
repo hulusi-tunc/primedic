@@ -1,10 +1,15 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
-import { features, type FeatureRow, type SpecBadge } from "@/lib/content";
+import { type FeatureRow, type SpecBadge } from "@/lib/content";
+import { getFeatures } from "@/lib/get-content";
+import { getLocale } from "next-intl/server";
 import { cn } from "@/lib/cn";
 
-export function Features() {
+export async function Features() {
+  const locale = await getLocale();
+  const features = getFeatures(locale);
+
   return (
     <section
       id="urunler"

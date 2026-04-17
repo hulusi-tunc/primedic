@@ -2,9 +2,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { LanguageSwitcher } from "@/components/ui/language-switcher";
-import { footerContent } from "@/lib/content";
+import { getFooterContent } from "@/lib/get-content";
+import { getLocale } from "next-intl/server";
 
-export function Footer() {
+export async function Footer() {
+  const locale = await getLocale();
+  const footerContent = getFooterContent(locale);
+
   return (
     <footer
       className="py-16 md:py-20"

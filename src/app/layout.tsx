@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { getLocale } from "next-intl/server";
 import "./globals.css";
 
 const inter = Inter({
@@ -8,19 +8,15 @@ const inter = Inter({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Primedic HeartSave myPAD — Her Yerde Kalbiniz Güvende",
-  description:
-    "HeartSave myPAD defibrilatör: akıllı defibrilasyon teknolojisi, gerçek zamanlı CPR geri bildirimi, IP66 dayanıklılık ve 8 yıl garanti. Bireysel ve kurumsal AED çözümleri.",
-};
-
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
+
   return (
-    <html lang="tr" className={`${inter.variable} antialiased`}>
+    <html lang={locale} className={`${inter.variable} antialiased`}>
       <body className="min-h-screen bg-background text-foreground">
         {children}
       </body>

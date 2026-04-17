@@ -1,8 +1,11 @@
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
-import { yonetmelik } from "@/lib/content.yonetmelik";
+import { getYonetmelik } from "@/lib/get-content";
+import { getLocale } from "next-intl/server";
 
-export function YonetmelikHero() {
+export async function YonetmelikHero() {
+  const locale = await getLocale();
+  const yonetmelik = getYonetmelik(locale);
   const { title, linkText, linkHref, bodyText } = yonetmelik.hero;
 
   return (

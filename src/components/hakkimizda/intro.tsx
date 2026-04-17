@@ -1,8 +1,11 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
-import { hakkimizda } from "@/lib/content.hakkimizda";
+import { getHakkimizda } from "@/lib/get-content";
+import { getLocale } from "next-intl/server";
 
-export function HakkimizdaIntro() {
+export async function HakkimizdaIntro() {
+  const locale = await getLocale();
+  const hakkimizda = getHakkimizda(locale);
   const { paragraphs, actionLabel, actionHref } = hakkimizda.intro;
 
   return (

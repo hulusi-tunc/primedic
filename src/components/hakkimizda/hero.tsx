@@ -2,9 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
-import { hakkimizda } from "@/lib/content.hakkimizda";
+import { getHakkimizda } from "@/lib/get-content";
+import { getLocale } from "next-intl/server";
 
-export function HakkimizdaHero() {
+export async function HakkimizdaHero() {
+  const locale = await getLocale();
+  const hakkimizda = getHakkimizda(locale);
   const { titleLine1, titleLine2, actionLabel, actionHref, tiles } =
     hakkimizda.hero;
   const [tallLeft, shortTop, shortBottom, tallRight] = tiles;

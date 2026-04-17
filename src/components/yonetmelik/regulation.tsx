@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
-import { yonetmelik } from "@/lib/content.yonetmelik";
+import { getYonetmelik } from "@/lib/get-content";
+import { getLocale } from "next-intl/server";
 
 function ParagraphText({ text }: { text: string }) {
   const parts = text.split(/(\*\*[^*]+\*\*)/g);
@@ -21,7 +22,9 @@ function ParagraphText({ text }: { text: string }) {
   );
 }
 
-export function YonetmelikRegulation() {
+export async function YonetmelikRegulation() {
+  const locale = await getLocale();
+  const yonetmelik = getYonetmelik(locale);
   const { pretitle, title, chapters } = yonetmelik.regulation;
   const download = yonetmelik.download;
 

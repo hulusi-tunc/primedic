@@ -1,9 +1,13 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
-import { ctaBanner } from "@/lib/content";
+import { getCtaBanner } from "@/lib/get-content";
+import { getLocale } from "next-intl/server";
 
-export function MidCTA() {
+export async function MidCTA() {
+  const locale = await getLocale();
+  const ctaBanner = getCtaBanner(locale);
+
   return (
     <section
       id="hakkimizda"

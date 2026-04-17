@@ -2,11 +2,14 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { aksesuarlar } from "@/lib/content.aksesuarlar";
+import { getAksesuarlar } from "@/lib/get-content";
+import { useLocale } from "next-intl";
 
 const MANUAL_COOLDOWN_MS = 900;
 
 export function AksesuarFeatureStrip() {
+  const locale = useLocale();
+  const aksesuarlar = getAksesuarlar(locale);
   const { featureStrip } = aksesuarlar;
   const wrapperRef = useRef<HTMLDivElement>(null);
   const scrollerRef = useRef<HTMLDivElement>(null);

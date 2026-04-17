@@ -3,9 +3,12 @@
 import { useState, useCallback } from "react";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
-import { stats } from "@/lib/content";
+import { getStats } from "@/lib/get-content";
+import { useLocale } from "next-intl";
 
 export function StatsCarousel() {
+  const locale = useLocale();
+  const stats = getStats(locale);
   const [index, setIndex] = useState(0);
   const total = stats.slides.length;
 
