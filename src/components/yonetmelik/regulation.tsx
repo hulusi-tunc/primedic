@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { getYonetmelik } from "@/lib/get-content";
 import { getLocale } from "next-intl/server";
@@ -86,12 +85,13 @@ export async function YonetmelikRegulation() {
             unoptimized
             className="h-[120px] w-auto md:h-[160px]"
           />
-          <Link
+          <a
             href={download.href}
+            download
             className="inline-flex h-[56px] w-[242px] items-center justify-center rounded-[24px] border-2 border-[#b21c1c] bg-white text-[20px] font-bold text-[#b21c1c] transition-colors hover:bg-[#b21c1c] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#3c0a0a] md:text-[24px]"
           >
             {download.label}
-          </Link>
+          </a>
         </div>
       </Container>
     </section>

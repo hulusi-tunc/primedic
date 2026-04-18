@@ -1,9 +1,28 @@
-import Link from "next/link";
+import { getLocale } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { MenuBar } from "@/components/sections/menu-bar";
 import { Footer } from "@/components/sections/footer";
 import { Container } from "@/components/ui/container";
 
-export default function NotFound() {
+const copy = {
+  tr: {
+    title: "Sayfa Bulunamadı",
+    description:
+      "Aradığınız sayfa taşınmış, silinmiş veya hiç var olmamış olabilir.",
+    cta: "Ana Sayfaya Dön",
+  },
+  en: {
+    title: "Page Not Found",
+    description:
+      "The page you're looking for may have moved, been deleted, or never existed.",
+    cta: "Back to Home",
+  },
+} as const;
+
+export default async function NotFound() {
+  const locale = await getLocale();
+  const t = locale === "en" ? copy.en : copy.tr;
+
   return (
     <>
       <MenuBar />
@@ -14,17 +33,17 @@ export default function NotFound() {
               404
             </p>
             <h1 className="mt-6 text-[28px] font-semibold text-white md:text-[36px]">
-              Sayfa Bulunamadı
+              {t.title}
             </h1>
             <p className="mt-4 text-[17px] leading-[1.6] text-white/70 md:text-[20px]">
-              Aradığınız sayfa taşınmış, silinmiş veya hiç var olmamış olabilir.
+              {t.description}
             </p>
             <div className="mt-10">
               <Link
                 href="/"
                 className="inline-flex h-[52px] items-center justify-center rounded-[24px] border-2 border-[#b21c1c] bg-white px-8 text-[18px] font-medium text-[#b21c1c] transition-colors hover:bg-[#b21c1c] hover:text-white"
               >
-                Ana Sayfaya Dön
+                {t.cta}
               </Link>
             </div>
           </div>

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { urlForImage } from "@/sanity/lib/image";
 import type { PostListItem } from "@/sanity/lib/types";
 

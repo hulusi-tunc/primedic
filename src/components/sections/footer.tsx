@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { LanguageSwitcher } from "@/components/ui/language-switcher";
@@ -31,7 +31,7 @@ export async function Footer() {
           </div>
 
           {/* Columns */}
-          <div className="grid gap-10 md:grid-cols-[auto_auto_1fr] md:items-start md:justify-items-end">
+          <div className="grid gap-10 md:grid-cols-[auto_auto_auto_1fr] md:items-start md:justify-items-end">
             {footerContent.companyColumns.map((col) => (
               <nav key={col.title} aria-label={col.title} className="min-w-[140px]">
                 <h3 className="text-eyebrow text-white/60">
