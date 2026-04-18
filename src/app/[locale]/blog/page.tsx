@@ -86,7 +86,9 @@ export default async function BlogPage() {
     { locale },
     { next: { revalidate: 60, tags: ["post"] } },
   );
-  const posts = sanityPosts && sanityPosts.length > 0 ? sanityPosts : dummyPosts;
+  const fallbackPosts = dummyPosts.filter((p) => p.language === locale);
+  const posts =
+    sanityPosts && sanityPosts.length > 0 ? sanityPosts : fallbackPosts;
 
   return (
     <>

@@ -2,132 +2,98 @@ import { defineField, defineType } from "sanity";
 
 export const post = defineType({
   name: "post",
-  title: "Blog Yazısı",
+  title: "Blog Yazısı / Blog Post",
   type: "document",
-  groups: [
-    { name: "tr", title: "🇹🇷 Türkçe", default: true },
-    { name: "en", title: "🇬🇧 English" },
-    { name: "meta", title: "Meta" },
-  ],
   fields: [
-    // --- Turkish ---
+    defineField({
+      name: "language",
+      title: "Dil / Language",
+      type: "string",
+      options: {
+        list: [
+          { title: "🇹🇷 Türkçe", value: "tr" },
+          { title: "🇬🇧 English", value: "en" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "tr",
+      validation: (Rule) => Rule.required(),
+    }),
     defineField({
       name: "title",
-      title: "Başlık (TR)",
+      title: "Başlık / Title",
       type: "string",
-      group: "tr",
       validation: (Rule) => Rule.required().max(120),
     }),
-    defineField({
-      name: "excerpt",
-      title: "Özet (TR)",
-      type: "text",
-      rows: 3,
-      group: "tr",
-      description: "Liste ve SEO için kısa özet (≈160 karakter).",
-      validation: (Rule) => Rule.max(240),
-    }),
-    defineField({
-      name: "body",
-      title: "İçerik (TR)",
-      type: "blockContent",
-      group: "tr",
-    }),
-
-    // --- English ---
-    defineField({
-      name: "title_en",
-      title: "Title (EN)",
-      type: "string",
-      group: "en",
-      validation: (Rule) => Rule.max(120),
-    }),
-    defineField({
-      name: "excerpt_en",
-      title: "Excerpt (EN)",
-      type: "text",
-      rows: 3,
-      group: "en",
-      description: "Short summary for listing and SEO (≈160 chars).",
-      validation: (Rule) => Rule.max(240),
-    }),
-    defineField({
-      name: "body_en",
-      title: "Content (EN)",
-      type: "blockContent",
-      group: "en",
-    }),
-
-    // --- Shared / Meta ---
     defineField({
       name: "slug",
       title: "Slug",
       type: "slug",
-      group: "meta",
       options: { source: "title", maxLength: 96 },
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: "excerpt",
+      title: "Özet / Excerpt",
+      type: "text",
+      rows: 3,
+      description:
+        "Liste kartlarında ve SEO meta'sında gösterilir (≈160 karakter önerilir). / Shown in listing cards and SEO meta (≈160 chars).",
+      validation: (Rule) => Rule.max(240),
+    }),
+    defineField({
       name: "coverImage",
-      title: "Kapak Görseli",
+      title: "Kapak Görseli / Cover Image",
       type: "image",
-      group: "meta",
       options: { hotspot: true },
-      fields: [
-        { name: "alt", type: "string", title: "Alt metni (TR)" },
-        { name: "alt_en", type: "string", title: "Alt text (EN)" },
-      ],
+      fields: [{ name: "alt", type: "string", title: "Alt text" }],
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: "body",
+      title: "İçerik / Content",
+      type: "blockContent",
+    }),
+    defineField({
       name: "categories",
-      title: "Kategoriler",
+      title: "Kategoriler / Categories",
       type: "array",
-      group: "meta",
       of: [{ type: "reference", to: [{ type: "category" }] }],
+      description:
+        "Kategoriler postun diline göre filtrelenir. / Categories are filtered by the post's language.",
     }),
     defineField({
       name: "tags",
-      title: "Etiketler",
+      title: "Etiketler / Tags",
       type: "array",
-      group: "meta",
       of: [{ type: "string" }],
       options: { layout: "tags" },
     }),
     defineField({
       name: "publishedAt",
-      title: "Yayın Tarihi",
+      title: "Yayın Tarihi / Publish Date",
       type: "datetime",
-      group: "meta",
       validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "featured",
-      title: "Öne Çıkar",
+      title: "Öne Çıkar / Featured",
       type: "boolean",
-      group: "meta",
       initialValue: false,
     }),
     defineField({
       name: "seo",
-      title: "SEO (TR)",
+      title: "SEO",
       type: "object",
-      group: "tr",
       options: { collapsible: true, collapsed: true },
       fields: [
         { name: "title", title: "Meta Title", type: "string" },
-        { name: "description", title: "Meta Description", type: "text", rows: 2 },
-      ],
-    }),
-    defineField({
-      name: "seo_en",
-      title: "SEO (EN)",
-      type: "object",
-      group: "en",
-      options: { collapsible: true, collapsed: true },
-      fields: [
-        { name: "title", title: "Meta Title", type: "string" },
-        { name: "description", title: "Meta Description", type: "text", rows: 2 },
+        {
+          name: "description",
+          title: "Meta Description",
+          type: "text",
+          rows: 2,
+        },
       ],
     }),
   ],
@@ -141,18 +107,18 @@ export const post = defineType({
   preview: {
     select: {
       title: "title",
-      titleEn: "title_en",
+      language: "language",
       media: "coverImage",
       date: "publishedAt",
     },
-    prepare({ title, titleEn, media, date }) {
-      const subtitle = [
-        titleEn ? `EN: ${titleEn}` : null,
-        date ? new Date(date).toLocaleDateString("tr-TR") : null,
-      ]
-        .filter(Boolean)
-        .join(" · ");
-      return { title, subtitle, media };
+    prepare({ title, language, media, date }) {
+      const flag = language === "en" ? "🇬🇧" : "🇹🇷";
+      const subtitle = date
+        ? new Date(date).toLocaleDateString(
+            language === "en" ? "en-US" : "tr-TR",
+          )
+        : undefined;
+      return { title: `${flag}  ${title}`, subtitle, media };
     },
   },
 });

@@ -9,8 +9,9 @@ import { PostBody } from "@/components/blog/portable-text";
 import { client } from "@/sanity/lib/client";
 import {
   postBySlugQuery,
-  postSlugsQuery,
+  postSlugsByLocaleQuery,
 } from "@/sanity/lib/queries";
+import { routing } from "@/i18n/routing";
 import { urlForImage } from "@/sanity/lib/image";
 import type { Post } from "@/sanity/lib/types";
 import { dummyPosts } from "@/lib/dummy-posts";
@@ -21,10 +22,20 @@ const SITE_URL = "https://primedic.com.tr";
 export const revalidate = 60;
 
 export async function generateStaticParams() {
-  const slugs = await client.fetch<string[]>(postSlugsQuery);
-  const sanity = (slugs ?? []).map((slug) => ({ slug }));
-  const dummy = dummyPosts.map((p) => ({ slug: p.slug }));
-  return [...sanity, ...dummy];
+  const perLocale = await Promise.all(
+    routing.locales.map(async (locale) => {
+      const slugs = await client.fetch<string[]>(postSlugsByLocaleQuery, {
+        locale,
+      });
+      return (slugs ?? []).map((slug) => ({ locale, slug }));
+    }),
+  );
+  const sanityParams = perLocale.flat();
+  const dummyParams = dummyPosts.map((p) => ({
+    locale: p.language,
+    slug: p.slug,
+  }));
+  return [...sanityParams, ...dummyParams];
 }
 
 type Params = { slug: string };
@@ -38,7 +49,9 @@ export async function generateMetadata({
   const locale = await getLocale();
   const post =
     (await client.fetch<Post | null>(postBySlugQuery, { slug, locale })) ??
-    (dummyPosts.find((p) => p.slug === slug) as Post | undefined) ??
+    (dummyPosts.find(
+      (p) => p.slug === slug && p.language === locale,
+    ) as Post | undefined) ??
     null;
   if (!post) {
     return {
@@ -97,7 +110,9 @@ export default async function BlogPostPage({
   );
   const post =
     sanityPost ??
-    (dummyPosts.find((p) => p.slug === slug) as Post | undefined) ??
+    (dummyPosts.find(
+      (p) => p.slug === slug && p.language === locale,
+    ) as Post | undefined) ??
     null;
 
   if (!post) notFound();

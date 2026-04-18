@@ -1,6 +1,8 @@
 import type { PortableTextBlock } from "@portabletext/react";
 import type { Image as SanityImage } from "sanity";
 
+export type Locale = "tr" | "en";
+
 export type CoverImage = SanityImage & { alt?: string };
 
 export type CategoryRef = {

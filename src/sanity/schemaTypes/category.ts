@@ -2,19 +2,28 @@ import { defineField, defineType } from "sanity";
 
 export const category = defineType({
   name: "category",
-  title: "Kategori",
+  title: "Kategori / Category",
   type: "document",
   fields: [
     defineField({
-      name: "title",
-      title: "Başlık (TR)",
+      name: "language",
+      title: "Dil / Language",
       type: "string",
+      options: {
+        list: [
+          { title: "🇹🇷 Türkçe", value: "tr" },
+          { title: "🇬🇧 English", value: "en" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "tr",
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: "title_en",
-      title: "Title (EN)",
+      name: "title",
+      title: "Başlık / Title",
       type: "string",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "slug",
@@ -25,24 +34,16 @@ export const category = defineType({
     }),
     defineField({
       name: "description",
-      title: "Açıklama (TR)",
-      type: "text",
-      rows: 2,
-    }),
-    defineField({
-      name: "description_en",
-      title: "Description (EN)",
+      title: "Açıklama / Description",
       type: "text",
       rows: 2,
     }),
   ],
   preview: {
-    select: { title: "title", titleEn: "title_en" },
-    prepare({ title, titleEn }) {
-      return {
-        title,
-        subtitle: titleEn ? `EN: ${titleEn}` : undefined,
-      };
+    select: { title: "title", language: "language" },
+    prepare({ title, language }) {
+      const flag = language === "en" ? "🇬🇧" : "🇹🇷";
+      return { title: `${flag}  ${title}` };
     },
   },
 });

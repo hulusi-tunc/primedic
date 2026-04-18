@@ -1,10 +1,11 @@
-import type { Post } from "@/sanity/lib/types";
+import type { Locale, Post } from "@/sanity/lib/types";
 
-type DummyPost = Post & { coverUrl: string };
+type DummyPost = Post & { coverUrl: string; language: Locale };
 
 export const dummyPosts: DummyPost[] = [
   {
     _id: "dummy-1",
+    language: "tr",
     title: "OED Nedir? Otomatik Eksternal Defibrilatör Rehberi",
     slug: "oed-nedir",
     excerpt:
@@ -103,6 +104,7 @@ export const dummyPosts: DummyPost[] = [
   },
   {
     _id: "dummy-2",
+    language: "tr",
     title: "Ani Kalp Durmasında İlk 5 Dakika Neden Kritik?",
     slug: "ilk-5-dakika",
     excerpt:
@@ -153,6 +155,7 @@ export const dummyPosts: DummyPost[] = [
   },
   {
     _id: "dummy-3",
+    language: "tr",
     title: "İş Yerinde OED Bulundurma Yönetmeliği 2026",
     slug: "isyeri-oed-yonetmeligi",
     excerpt:
@@ -205,6 +208,7 @@ export const dummyPosts: DummyPost[] = [
   },
   {
     _id: "dummy-4",
+    language: "tr",
     title: "CPR Nasıl Yapılır? Adım Adım Göğüs Kompresyonu Rehberi",
     slug: "cpr-nasil-yapilir",
     excerpt:
@@ -255,6 +259,7 @@ export const dummyPosts: DummyPost[] = [
   },
   {
     _id: "dummy-5",
+    language: "tr",
     title: "HeartSave myPAD ile Tanışın: Kompakt AED Teknolojisi",
     slug: "heartsave-mypad-tanitim",
     excerpt:
@@ -305,6 +310,7 @@ export const dummyPosts: DummyPost[] = [
   },
   {
     _id: "dummy-6",
+    language: "tr",
     title: "Spor Tesislerinde Ani Kalp Durması Riski ve Önlemler",
     slug: "spor-tesisleri-risk",
     excerpt:
