@@ -43,7 +43,9 @@ export function LanguageSwitcher() {
   const switchLocale = (lang: Language) => {
     setOpen(false);
     if (lang.code === locale) return;
-    router.replace(pathname, { locale: lang.code });
+    // Cast needed because pathname may be a dynamic template like "/blog/[slug]"
+    // which the strict router type rejects without explicit params.
+    router.replace(pathname as never, { locale: lang.code });
   };
 
   return (

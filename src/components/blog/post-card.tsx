@@ -12,7 +12,7 @@ export function PostCard({ post }: { post: PostListItem }) {
   return (
     <article className="group flex flex-col gap-5">
       <Link
-        href={`/blog/${post.slug}`}
+        href={{ pathname: "/blog/[slug]", params: { slug: post.slug } }}
         className="relative block aspect-[580/420] overflow-hidden rounded-[16px] bg-black/5 ring-1 ring-black/[0.04]"
         aria-label={post.title}
       >
@@ -28,7 +28,7 @@ export function PostCard({ post }: { post: PostListItem }) {
       <div className="flex flex-col gap-3">
         <h3 className="font-medium text-black transition-colors group-hover:text-[#b21c1c]">
           <Link
-            href={`/blog/${post.slug}`}
+            href={{ pathname: "/blog/[slug]", params: { slug: post.slug } }}
             className="focus-visible:outline-none focus-visible:underline"
           >
             {post.title}

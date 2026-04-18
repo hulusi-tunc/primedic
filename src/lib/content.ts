@@ -396,12 +396,17 @@ export const footerContent = {
       title: "Menü",
       links: [
         { label: "Ana Sayfa", href: "/" },
-        { label: "HeartSave myPAD", href: "/urunler/heartsave-mypad" },
-        { label: "Aksesuarlar", href: "/urunler/aksesuarlar" },
         { label: "Yönetmelik", href: "/yonetmelik" },
         { label: "Hakkımızda", href: "/hakkimizda" },
         { label: "İletişim", href: "/iletisim" },
         { label: "Blog", href: "/blog" },
+      ],
+    },
+    {
+      title: "Ürünler",
+      links: [
+        { label: "HeartSave myPAD", href: "/urunler/heartsave-mypad" },
+        { label: "Aksesuarlar", href: "/urunler/aksesuarlar" },
       ],
     },
     {

@@ -1,4 +1,3 @@
-import { Link } from "@/i18n/navigation";
 import { Container } from "@/components/ui/container";
 import { PostCard } from "./post-card";
 import type { PostListItem } from "@/sanity/lib/types";
@@ -49,12 +48,12 @@ function EmptyState() {
       <p className="text-body text-black/70">
         Primedic Studio&apos;dan yayınlanan içerikler burada görünecek. İçerik
         eklemek için{" "}
-        <Link
+        <a
           href="/studio"
           className="font-semibold text-[#b21c1c] underline-offset-4 hover:underline"
         >
           /studio
-        </Link>{" "}
+        </a>{" "}
         sayfasını ziyaret edin.
       </p>
     </div>
