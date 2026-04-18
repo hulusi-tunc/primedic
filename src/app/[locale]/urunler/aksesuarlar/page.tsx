@@ -7,35 +7,60 @@ import { AksesuarAccessories } from "@/components/aksesuarlar/accessories";
 import { aksesuarlar } from "@/lib/content.aksesuarlar";
 
 const SITE_URL = "https://primedic.com.tr";
-const PAGE_PATH = "/urunler/aksesuarlar";
-const CANONICAL = `${SITE_URL}${PAGE_PATH}`;
+const CANONICAL = `${SITE_URL}/tr/urunler/aksesuarlar`;
 
-export const metadata: Metadata = {
-  title: aksesuarlar.seo.title,
-  description: aksesuarlar.seo.description,
-  keywords: [...aksesuarlar.seo.keywords],
-  alternates: {
-    canonical: CANONICAL,
-    languages: {
-      "tr-TR": CANONICAL,
-      "en-US": `${SITE_URL}/en/products/accessories`,
-      "x-default": CANONICAL,
+const meta = {
+  tr: {
+    title: "HeartSave myPAD Aksesuarları — Elektrot, Batarya, Çanta | Primedic",
+    description:
+      "AED kurulumu için gereken her şey: duvar aparatı, taşıma çantası, yedek elektrot ve eğitim kiti. Primedic HeartSave myPAD orijinal aksesuarları Bilgin Tıp'ta.",
+    path: "/tr/urunler/aksesuarlar",
+  },
+  en: {
+    title:
+      "HeartSave myPAD Accessories — Electrodes, Battery, Case | Primedic",
+    description:
+      "Everything you need for AED setup: wall mount, carry case, replacement electrodes and training kit. Original Primedic HeartSave myPAD accessories at Bilgin Tıp.",
+    path: "/en/products/accessories",
+  },
+} as const;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: "tr" | "en" }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = meta[locale] ?? meta.tr;
+  const canonical = `${SITE_URL}${t.path}`;
+
+  return {
+    title: t.title,
+    description: t.description,
+    keywords: [...aksesuarlar.seo.keywords],
+    alternates: {
+      canonical,
+      languages: {
+        "tr-TR": `${SITE_URL}/tr/urunler/aksesuarlar`,
+        "en-US": `${SITE_URL}/en/products/accessories`,
+        "x-default": `${SITE_URL}/tr/urunler/aksesuarlar`,
+      },
     },
-  },
-  openGraph: {
-    type: "website",
-    url: CANONICAL,
-    title: aksesuarlar.seo.title,
-    description: aksesuarlar.seo.description,
-    locale: "tr_TR",
-    siteName: "Primedic — Bilgin Tıp",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: aksesuarlar.seo.title,
-    description: aksesuarlar.seo.description,
-  },
-};
+    openGraph: {
+      type: "website",
+      url: canonical,
+      title: t.title,
+      description: t.description,
+      locale: locale === "en" ? "en_US" : "tr_TR",
+      siteName: "Primedic — Bilgin Tıp",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t.title,
+      description: t.description,
+    },
+  };
+}
 
 const jsonLd = {
   "@context": "https://schema.org",

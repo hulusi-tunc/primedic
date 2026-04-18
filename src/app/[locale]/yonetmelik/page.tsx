@@ -7,35 +7,59 @@ import { ProductCTA } from "@/components/product/cta";
 import { yonetmelik } from "@/lib/content.yonetmelik";
 
 const SITE_URL = "https://primedic.com.tr";
-const PAGE_PATH = "/yonetmelik";
-const CANONICAL = `${SITE_URL}${PAGE_PATH}`;
+const CANONICAL = `${SITE_URL}/tr/yonetmelik`;
 
-export const metadata: Metadata = {
-  title: yonetmelik.seo.title,
-  description: yonetmelik.seo.description,
-  keywords: [...yonetmelik.seo.keywords],
-  alternates: {
-    canonical: CANONICAL,
-    languages: {
-      "tr-TR": CANONICAL,
-      "en-US": `${SITE_URL}/en/regulation`,
-      "x-default": CANONICAL,
+const meta = {
+  tr: {
+    title: "OED Yönetmeliği — İş Yeri Zorunlulukları | Primedic",
+    description:
+      "İş yerinizde OED bulundurmak zorunlu mu? Aralık 2025 yönetmeliği kimleri kapsıyor, ne zaman uygulanıyor? Resmi Gazete metnini ve özet rehberi burada okuyun.",
+    path: "/tr/yonetmelik",
+  },
+  en: {
+    title: "AED Regulation Turkey — Workplace Requirements | Primedic",
+    description:
+      "Is your workplace required to have an AED in Turkey? Find out who the December 2025 regulation covers, key deadlines, and read the full official text with a summary guide.",
+    path: "/en/regulation",
+  },
+} as const;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: "tr" | "en" }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = meta[locale] ?? meta.tr;
+  const canonical = `${SITE_URL}${t.path}`;
+
+  return {
+    title: t.title,
+    description: t.description,
+    keywords: [...yonetmelik.seo.keywords],
+    alternates: {
+      canonical,
+      languages: {
+        "tr-TR": `${SITE_URL}/tr/yonetmelik`,
+        "en-US": `${SITE_URL}/en/regulation`,
+        "x-default": `${SITE_URL}/tr/yonetmelik`,
+      },
     },
-  },
-  openGraph: {
-    type: "article",
-    url: CANONICAL,
-    title: yonetmelik.seo.title,
-    description: yonetmelik.seo.description,
-    locale: "tr_TR",
-    siteName: "Primedic — Bilgin Tıp",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: yonetmelik.seo.title,
-    description: yonetmelik.seo.description,
-  },
-};
+    openGraph: {
+      type: "article",
+      url: canonical,
+      title: t.title,
+      description: t.description,
+      locale: locale === "en" ? "en_US" : "tr_TR",
+      siteName: "Primedic — Bilgin Tıp",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t.title,
+      description: t.description,
+    },
+  };
+}
 
 const jsonLd = {
   "@context": "https://schema.org",

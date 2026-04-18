@@ -9,35 +9,59 @@ import { ProductCTA } from "@/components/product/cta";
 import { hakkimizda } from "@/lib/content.hakkimizda";
 
 const SITE_URL = "https://primedic.com.tr";
-const PAGE_PATH = "/hakkimizda";
-const CANONICAL = `${SITE_URL}${PAGE_PATH}`;
+const CANONICAL = `${SITE_URL}/tr/hakkimizda`;
 
-export const metadata: Metadata = {
-  title: hakkimizda.seo.title,
-  description: hakkimizda.seo.description,
-  keywords: [...hakkimizda.seo.keywords],
-  alternates: {
-    canonical: CANONICAL,
-    languages: {
-      "tr-TR": CANONICAL,
-      "en-US": `${SITE_URL}/en/about`,
-      "x-default": CANONICAL,
+const meta = {
+  tr: {
+    title: "Hakkımızda — 35 Yıllık Medikal Tecrübe | Bilgin Tıp",
+    description:
+      "35 yılı aşkın tecrübesi ile Bilgin Tıp Medikal; ostomi, yara bakımı ve acil müdahale sistemleri alanlarında güvenilir çözüm ortağınız.",
+    path: "/tr/hakkimizda",
+  },
+  en: {
+    title: "About Us — 35 Years of Medical Excellence | Bilgin Tıp",
+    description:
+      "With over 35 years of experience, Bilgin Tıp Medikal is your trusted partner in ostomy, wound care and emergency response solutions.",
+    path: "/en/about-us",
+  },
+} as const;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: "tr" | "en" }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = meta[locale] ?? meta.tr;
+  const canonical = `${SITE_URL}${t.path}`;
+
+  return {
+    title: t.title,
+    description: t.description,
+    keywords: [...hakkimizda.seo.keywords],
+    alternates: {
+      canonical,
+      languages: {
+        "tr-TR": `${SITE_URL}/tr/hakkimizda`,
+        "en-US": `${SITE_URL}/en/about-us`,
+        "x-default": `${SITE_URL}/tr/hakkimizda`,
+      },
     },
-  },
-  openGraph: {
-    type: "website",
-    url: CANONICAL,
-    title: hakkimizda.seo.title,
-    description: hakkimizda.seo.description,
-    locale: "tr_TR",
-    siteName: "Primedic — Bilgin Tıp",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: hakkimizda.seo.title,
-    description: hakkimizda.seo.description,
-  },
-};
+    openGraph: {
+      type: "website",
+      url: canonical,
+      title: t.title,
+      description: t.description,
+      locale: locale === "en" ? "en_US" : "tr_TR",
+      siteName: "Primedic — Bilgin Tıp",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t.title,
+      description: t.description,
+    },
+  };
+}
 
 const jsonLd = {
   "@context": "https://schema.org",

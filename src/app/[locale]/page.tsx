@@ -14,46 +14,64 @@ import { faq } from "@/lib/content";
 
 const SITE_URL = "https://primedic.com.tr";
 
-export const metadata: Metadata = {
-  title: "Primedic HeartSave myPAD — Her Yerde Kalbiniz Güvende | Bilgin Tıp",
-  description:
-    "HeartSave myPAD otomatik eksternal defibrilatör (OED/AED): biphasic defibrilasyon, gerçek zamanlı CPR geri bildirimi, IoT uzaktan yönetim, IP66 dayanıklılık. Türkiye distribütörü Bilgin Tıp.",
-  keywords: [
-    "Primedic",
-    "HeartSave myPAD",
-    "AED",
-    "OED",
-    "otomatik eksternal defibrilatör",
-    "defibrilatör",
-    "CPR",
-    "kalp krizi",
-    "ani kalp durması",
-    "Bilgin Tıp",
-  ],
-  alternates: {
-    canonical: SITE_URL,
-    languages: {
-      "tr-TR": SITE_URL,
-      "en-US": `${SITE_URL}/en`,
-      "x-default": SITE_URL,
+const meta = {
+  tr: {
+    title: "Primedic HeartSave myPAD — Otomatik Defibrilatör | Bilgin Tıp",
+    description:
+      "Türkiye'de AED cihazı arıyorsanız: Primedic HeartSave myPAD, 8 yıl garanti, IP66 dayanıklılık, IoT yönetim. İş yeri ve kurum OED çözümleri için Bilgin Tıp.",
+  },
+  en: {
+    title: "Primedic HeartSave myPAD — Automatic Defibrillator | Bilgin Tıp",
+    description:
+      "Looking for an AED? Primedic HeartSave myPAD — 8-year warranty, IP66 rated, IoT-enabled. Workplace and institutional defibrillator solutions by Bilgin Tıp.",
+  },
+} as const;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: "tr" | "en" }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = meta[locale] ?? meta.tr;
+  const canonical = locale === "en" ? `${SITE_URL}/en` : `${SITE_URL}/tr`;
+
+  return {
+    title: t.title,
+    description: t.description,
+    keywords: [
+      "Primedic",
+      "HeartSave myPAD",
+      "AED",
+      "OED",
+      "otomatik eksternal defibrilatör",
+      "defibrilatör",
+      "CPR",
+      "Bilgin Tıp",
+    ],
+    alternates: {
+      canonical,
+      languages: {
+        "tr-TR": `${SITE_URL}/tr`,
+        "en-US": `${SITE_URL}/en`,
+        "x-default": `${SITE_URL}/tr`,
+      },
     },
-  },
-  openGraph: {
-    type: "website",
-    url: SITE_URL,
-    title: "Primedic HeartSave myPAD — Her Yerde Kalbiniz Güvende",
-    description:
-      "HeartSave myPAD: biphasic defibrilasyon, CPR geri bildirimi, IoT bağlantısı. Türkiye distribütörü Bilgin Tıp.",
-    locale: "tr_TR",
-    siteName: "Primedic — Bilgin Tıp",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Primedic HeartSave myPAD — Her Yerde Kalbiniz Güvende",
-    description:
-      "HeartSave myPAD: biphasic defibrilasyon, CPR geri bildirimi, IoT bağlantısı. Türkiye distribütörü Bilgin Tıp.",
-  },
-};
+    openGraph: {
+      type: "website",
+      url: canonical,
+      title: t.title,
+      description: t.description,
+      locale: locale === "en" ? "en_US" : "tr_TR",
+      siteName: "Primedic — Bilgin Tıp",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t.title,
+      description: t.description,
+    },
+  };
+}
 
 const jsonLd = {
   "@context": "https://schema.org",

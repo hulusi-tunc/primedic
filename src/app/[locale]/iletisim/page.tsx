@@ -6,35 +6,60 @@ import { IletisimContactForm } from "@/components/iletisim/contact-form";
 import { iletisim } from "@/lib/content.iletisim";
 
 const SITE_URL = "https://primedic.com.tr";
-const PAGE_PATH = "/iletisim";
-const CANONICAL = `${SITE_URL}${PAGE_PATH}`;
 
-export const metadata: Metadata = {
-  title: iletisim.seo.title,
-  description: iletisim.seo.description,
-  keywords: [...iletisim.seo.keywords],
-  alternates: {
-    canonical: CANONICAL,
-    languages: {
-      "tr-TR": CANONICAL,
-      "en-US": `${SITE_URL}/en/contact`,
-      "x-default": CANONICAL,
+const meta = {
+  tr: {
+    title: "AED Teklif Talebi ve İletişim | Primedic Türkiye",
+    description:
+      "Primedic HeartSave myPAD için fiyat teklifi alın. İş yeri OED zorunluluğu, kurulum ve aksesuar sorularınız için Bilgin Tıp ekibi yanınızda.",
+    path: "/tr/iletisim",
+  },
+  en: {
+    title: "Contact & Quote Request | Primedic Turkey — Bilgin Tıp",
+    description:
+      "Get a quote for the Primedic HeartSave myPAD. Workplace AED requirements, installation, and accessories — the Bilgin Tıp team is here to help.",
+    path: "/en/contact",
+  },
+} as const;
+
+const CANONICAL = `${SITE_URL}/tr/iletisim`;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: "tr" | "en" }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = meta[locale] ?? meta.tr;
+  const canonical = `${SITE_URL}${t.path}`;
+
+  return {
+    title: t.title,
+    description: t.description,
+    keywords: [...iletisim.seo.keywords],
+    alternates: {
+      canonical,
+      languages: {
+        "tr-TR": `${SITE_URL}/tr/iletisim`,
+        "en-US": `${SITE_URL}/en/contact`,
+        "x-default": `${SITE_URL}/tr/iletisim`,
+      },
     },
-  },
-  openGraph: {
-    type: "website",
-    url: CANONICAL,
-    title: iletisim.seo.title,
-    description: iletisim.seo.description,
-    locale: "tr_TR",
-    siteName: "Primedic — Bilgin Tıp",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: iletisim.seo.title,
-    description: iletisim.seo.description,
-  },
-};
+    openGraph: {
+      type: "website",
+      url: canonical,
+      title: t.title,
+      description: t.description,
+      locale: locale === "en" ? "en_US" : "tr_TR",
+      siteName: "Primedic — Bilgin Tıp",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t.title,
+      description: t.description,
+    },
+  };
+}
 
 const jsonLd = {
   "@context": "https://schema.org",
