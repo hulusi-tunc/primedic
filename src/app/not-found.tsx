@@ -1,13 +1,49 @@
 import Link from "next/link";
 import Image from "next/image";
+import { headers } from "next/headers";
 
 export const metadata = {
   title: "404 — Primedic",
 };
 
-export default function RootNotFound() {
+const copy = {
+  tr: {
+    htmlLang: "tr",
+    title: "Sayfa Bulunamadı",
+    description:
+      "Aradığınız sayfa taşınmış, silinmiş veya hiç var olmamış olabilir.",
+    cta: "Ana Sayfaya Dön",
+    homeHref: "/tr",
+  },
+  en: {
+    htmlLang: "en",
+    title: "Page Not Found",
+    description:
+      "The page you're looking for may have moved, been deleted, or never existed.",
+    cta: "Back to Home",
+    homeHref: "/en",
+  },
+} as const;
+
+function detectLocale(acceptLanguage: string | null): "tr" | "en" {
+  if (!acceptLanguage) return "tr";
+  const langs = acceptLanguage
+    .split(",")
+    .map((l) => l.split(";")[0].trim().toLowerCase());
+  for (const lang of langs) {
+    if (lang.startsWith("en")) return "en";
+    if (lang.startsWith("tr")) return "tr";
+  }
+  return "tr";
+}
+
+export default async function RootNotFound() {
+  const h = await headers();
+  const locale = detectLocale(h.get("accept-language"));
+  const t = copy[locale];
+
   return (
-    <html lang="tr">
+    <html lang={t.htmlLang}>
       <body
         className="min-h-screen antialiased"
         style={{
@@ -19,7 +55,7 @@ export default function RootNotFound() {
         }}
       >
         <main className="mx-auto flex min-h-screen max-w-[720px] flex-col items-center justify-center px-6 py-24 text-center">
-          <Link href="/" aria-label="Primedic">
+          <Link href={t.homeHref} aria-label="Primedic">
             <Image
               src="/logos/primedic.webp"
               alt="Primedic"
@@ -38,27 +74,19 @@ export default function RootNotFound() {
           </p>
 
           <h1 className="mt-6 text-[28px] font-semibold md:text-[36px]">
-            Sayfa Bulunamadı · Page Not Found
+            {t.title}
           </h1>
 
           <p className="mt-4 text-[17px] leading-[1.6] text-white/70 md:text-[20px]">
-            Aradığınız sayfa taşınmış veya hiç var olmamış olabilir.
-            <br />
-            The page you're looking for may have moved or never existed.
+            {t.description}
           </p>
 
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-10">
             <Link
-              href="/tr"
+              href={t.homeHref}
               className="inline-flex h-[52px] items-center justify-center rounded-[24px] border-2 border-[#b21c1c] bg-white px-8 text-[18px] font-medium text-[#b21c1c] transition-colors hover:bg-[#b21c1c] hover:text-white"
             >
-              Ana Sayfa
-            </Link>
-            <Link
-              href="/en"
-              className="inline-flex h-[52px] items-center justify-center rounded-[24px] border-2 border-white/30 bg-transparent px-8 text-[18px] font-medium text-white transition-colors hover:bg-white hover:text-[#3c0a0a]"
-            >
-              Home
+              {t.cta}
             </Link>
           </div>
         </main>
