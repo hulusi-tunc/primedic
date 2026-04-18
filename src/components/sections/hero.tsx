@@ -13,11 +13,10 @@ export async function Hero() {
     <section className="relative isolate overflow-hidden bg-[#1a0303] pt-[160px] pb-[80px] md:pt-[200px] md:pb-[120px]">
       <Image
         src="/images/hero/backdrop.webp"
-        alt=""
+        alt="Primedic HeartSave myPAD hero arkaplanı — kırmızı gradyan ışık efekti"
         width={1920}
         height={1503}
         priority
-        aria-hidden
         className="pointer-events-none absolute inset-0 -z-10 h-full w-full object-cover object-top select-none"
       />
 

@@ -83,7 +83,7 @@ export function AksesuarAccessories() {
                 >
                   <Image
                     src={chip.icon}
-                    alt=""
+                    alt={`${chip.label} kategori ikonu`}
                     width={54}
                     height={54}
                     className="h-auto w-auto max-h-[54px] max-w-[54px] object-contain"

@@ -13,8 +13,7 @@ export async function ProductOverview() {
     <section className="relative overflow-hidden bg-white py-[88px] text-[#2D2E2E] md:py-[140px]">
       <Image
         src="/images/product/heartbeat-left.svg"
-        alt=""
-        aria-hidden
+        alt="Kalp ritmi dalgası — sol dekoratif EKG çizgisi"
         width={384}
         height={184}
         unoptimized
@@ -22,8 +21,7 @@ export async function ProductOverview() {
       />
       <Image
         src="/images/product/heartbeat-right.svg"
-        alt=""
-        aria-hidden
+        alt="Kalp ritmi dalgası — sağ dekoratif EKG çizgisi"
         width={375}
         height={184}
         unoptimized
