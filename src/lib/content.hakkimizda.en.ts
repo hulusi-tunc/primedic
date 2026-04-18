@@ -53,7 +53,7 @@ export const hakkimizda = {
       "Our goal is to make life-saving solutions more accessible by combining reliable technologies with proper usage and sustainable systems in the healthcare field.",
     ],
     actionLabel: "Discover Bilgin Tıp Medikal",
-    actionHref: "https://www.bilgintip.com.tr",
+    actionHref: "https://bilgintip.com/",
   },
 
   solutions: {

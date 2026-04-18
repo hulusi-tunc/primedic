@@ -44,7 +44,7 @@ export async function AksesuarHero() {
               <div>
                 <Link
                   href={hero.actionHref}
-                  className="inline-flex h-[56px] items-center justify-center rounded-[24px] border-2 border-[#b21c1c] bg-white px-10 text-[20px] font-medium leading-none text-[#b21c1c] transition-colors hover:bg-[#b21c1c] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 md:text-[24px]"
+                  className="inline-flex h-[48px] items-center justify-center whitespace-nowrap rounded-[24px] border-2 border-[#b21c1c] bg-white px-6 text-[16px] font-medium leading-none text-[#b21c1c] transition-colors hover:bg-[#b21c1c] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 md:h-[56px] md:px-10 md:text-[20px] lg:text-[24px]"
                 >
                   {hero.actionLabel}
                 </Link>

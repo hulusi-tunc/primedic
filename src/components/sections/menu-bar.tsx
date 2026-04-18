@@ -86,7 +86,15 @@ export function MenuBar() {
           <button
             type="button"
             onClick={() => setMobileOpen((v) => !v)}
-            aria-label={mobileOpen ? "Menüyü kapat" : "Menüyü aç"}
+            aria-label={
+              locale === "en"
+                ? mobileOpen
+                  ? "Close menu"
+                  : "Open menu"
+                : mobileOpen
+                  ? "Menüyü kapat"
+                  : "Menüyü aç"
+            }
             aria-expanded={mobileOpen}
             aria-controls="mobile-menu"
             className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 lg:hidden"

@@ -25,7 +25,15 @@ const initial: FormState = {
 export function IletisimContactForm() {
   const locale = useLocale();
   const iletisim = getIletisim(locale);
-  const { heading, paragraphs, contact, fields, submitLabel } = iletisim.form;
+  const {
+    heading,
+    paragraphs,
+    contact,
+    fields,
+    submitLabel,
+    sendingLabel,
+    successMessage,
+  } = iletisim.form;
   const [values, setValues] = useState<FormState>(initial);
   const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
 
@@ -152,7 +160,7 @@ export function IletisimContactForm() {
               disabled={status === "sending"}
               className="mt-10 flex h-[52px] w-full items-center justify-center rounded-[24px] border border-[#b356c1] bg-[rgba(178,28,28,0.9)] px-8 text-[18px] font-semibold leading-none text-white transition-colors hover:bg-[#b21c1c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b21c1c]/40 disabled:opacity-70"
             >
-              {status === "sending" ? "Gönderiliyor…" : submitLabel}
+              {status === "sending" ? sendingLabel : submitLabel}
             </button>
 
             {status === "sent" && (
@@ -160,7 +168,7 @@ export function IletisimContactForm() {
                 role="status"
                 className="mt-4 text-center text-[14px] font-medium text-[#11845b]"
               >
-                Mesajınız alındı. En kısa sürede dönüş yapacağız.
+                {successMessage}
               </p>
             )}
           </form>

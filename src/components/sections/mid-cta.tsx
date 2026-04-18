@@ -45,7 +45,7 @@ export async function MidCTA() {
           <Reveal delay={0.25} y={16}>
             <Link
               href={ctaBanner.actionHref}
-              className="inline-flex h-[56px] items-center justify-center rounded-[24px] border-2 border-[#b21c1c] bg-white px-8 text-[20px] font-medium leading-none text-[#b21c1c] transition-colors hover:bg-[#b21c1c] hover:text-white md:text-[24px]"
+              className="inline-flex h-[48px] items-center justify-center whitespace-nowrap rounded-[24px] border-2 border-[#b21c1c] bg-white px-6 text-[16px] font-medium leading-none text-[#b21c1c] transition-colors hover:bg-[#b21c1c] hover:text-white md:h-[56px] md:px-8 md:text-[20px] lg:text-[24px]"
             >
               {ctaBanner.actionLabel}
             </Link>

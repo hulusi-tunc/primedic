@@ -92,6 +92,7 @@ export const heartsaveMypad = {
     posterSrc: "/images/product/video-poster.jpg",
     posterAlt:
       "HeartSave myPAD tanıtım videosu önizleme görseli",
+    playLabel: "Tanıtım videosunu oynat",
   },
 
   connectivity: {

@@ -64,7 +64,7 @@ export const hakkimizda = {
       "Amacımız, sağlık alanında güvenilir teknolojileri doğru kullanım ve sürdürülebilir sistemlerle buluşturarak, hayat kurtaran çözümleri daha erişilebilir hale getirmektir.",
     ],
     actionLabel: "Bilgin Tıp Medikal'i Keşfet",
-    actionHref: "https://www.bilgintip.com.tr",
+    actionHref: "https://bilgintip.com/",
   },
 
   solutions: {

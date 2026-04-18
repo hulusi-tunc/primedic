@@ -30,7 +30,7 @@ export const iletisim = {
     ],
     contact: {
       address: "Şaşmaz Plaza Kozyatağı, Kadıköy",
-      phone: "0216 999 22 29",
+      phone: "+90 216 999 22 29",
       phoneHref: "tel:+902169992229",
       email: "info@bilgintip.com",
       emailHref: "mailto:info@bilgintip.com",
@@ -43,5 +43,7 @@ export const iletisim = {
       message: { label: "Message", placeholder: "Your message...", required: true },
     },
     submitLabel: "Send Message",
+    sendingLabel: "Sending…",
+    successMessage: "Your message was received. We'll get back to you shortly.",
   },
 } as const;

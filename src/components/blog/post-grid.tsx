@@ -2,12 +2,21 @@ import { Container } from "@/components/ui/container";
 import { PostCard } from "./post-card";
 import type { PostListItem } from "@/sanity/lib/types";
 
+type EmptyCopy = {
+  badge: string;
+  heading: string;
+  bodyPrefix: string;
+  bodySuffix: string;
+};
+
 export function PostGrid({
   heading,
   posts,
+  empty,
 }: {
   heading: string;
   posts: readonly PostListItem[];
+  empty: EmptyCopy;
 }) {
   return (
     <section className="bg-white py-[72px] text-black md:py-[91px]">
@@ -17,7 +26,7 @@ export function PostGrid({
             {heading}
           </h2>
 
-          {posts.length === 0 ? <EmptyState /> : <Grid posts={posts} />}
+          {posts.length === 0 ? <EmptyState copy={empty} /> : <Grid posts={posts} />}
         </div>
       </Container>
     </section>
@@ -36,25 +45,22 @@ function Grid({ posts }: { posts: readonly PostListItem[] }) {
   );
 }
 
-function EmptyState() {
+function EmptyState({ copy }: { copy: EmptyCopy }) {
   return (
     <div className="mx-auto flex max-w-[560px] flex-col items-center gap-4 rounded-[24px] border-2 border-dashed border-black/15 px-8 py-16 text-center">
       <span className="inline-flex items-center justify-center rounded-full border border-[#b21c1c] px-4 py-1 text-[12px] font-semibold uppercase tracking-[0.14em] text-[#b21c1c]">
-        Çok yakında
+        {copy.badge}
       </span>
-      <h3 className="text-black">
-        İlk yazılarımız hazırlanıyor
-      </h3>
+      <h3 className="text-black">{copy.heading}</h3>
       <p className="text-body text-black/70">
-        Primedic Studio&apos;dan yayınlanan içerikler burada görünecek. İçerik
-        eklemek için{" "}
+        {copy.bodyPrefix}
         <a
           href="/studio"
           className="font-semibold text-[#b21c1c] underline-offset-4 hover:underline"
         >
           /studio
-        </a>{" "}
-        sayfasını ziyaret edin.
+        </a>
+        {copy.bodySuffix}
       </p>
     </div>
   );

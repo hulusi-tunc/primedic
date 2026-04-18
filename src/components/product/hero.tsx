@@ -41,7 +41,7 @@ export async function ProductHero() {
             <div className="mt-12">
               <Link
                 href={ctaHref}
-                className="inline-flex h-[56px] w-[198px] items-center justify-center rounded-[24px] border-2 border-[#b21c1c] bg-white text-[20px] font-medium text-[#b21c1c] transition-colors hover:bg-[#b21c1c] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#3c0a0a] md:text-[24px]"
+                className="inline-flex h-[48px] items-center justify-center whitespace-nowrap rounded-[24px] border-2 border-[#b21c1c] bg-white px-6 text-[16px] font-medium text-[#b21c1c] transition-colors hover:bg-[#b21c1c] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#3c0a0a] md:h-[56px] md:px-8 md:text-[20px] lg:text-[24px]"
               >
                 {ctaLabel}
               </Link>

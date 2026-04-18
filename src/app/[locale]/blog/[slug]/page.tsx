@@ -40,7 +40,14 @@ export async function generateMetadata({
     (await client.fetch<Post | null>(postBySlugQuery, { slug, locale })) ??
     (dummyPosts.find((p) => p.slug === slug) as Post | undefined) ??
     null;
-  if (!post) return { title: "Yazı bulunamadı — Primedic Blog" };
+  if (!post) {
+    return {
+      title:
+        locale === "en"
+          ? "Post not found — Primedic Blog"
+          : "Yazı bulunamadı — Primedic Blog",
+    };
+  }
 
   const canonical = `${SITE_URL}/blog/${post.slug}`;
   const title = post.seo?.title ?? `${post.title} | Primedic Blog`;

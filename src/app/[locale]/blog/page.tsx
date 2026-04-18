@@ -20,6 +20,12 @@ const meta = {
     heroDescription:
       "OED kullanımı, yönetmelikler ve uygulama süreçleri hakkında güncel içeriklerimizi keşfedin.",
     listHeading: "Son Yayınlanan İçerikler",
+    empty: {
+      badge: "Çok yakında",
+      heading: "İlk yazılarımız hazırlanıyor",
+      bodyPrefix: "Primedic Studio'dan yayınlanan içerikler burada görünecek. İçerik eklemek için ",
+      bodySuffix: " sayfasını ziyaret edin.",
+    },
   },
   en: {
     title: "AED & CPR Guides | Primedic Turkey Blog",
@@ -29,6 +35,12 @@ const meta = {
     heroDescription:
       "Discover up-to-date content on AED use, regulations, and implementation processes.",
     listHeading: "Latest Articles",
+    empty: {
+      badge: "Coming soon",
+      heading: "Our first articles are on the way",
+      bodyPrefix: "Articles published from Primedic Studio will appear here. To add content, visit ",
+      bodySuffix: ".",
+    },
   },
 } as const;
 
@@ -81,7 +93,7 @@ export default async function BlogPage() {
       <MenuBar />
       <main>
         <BlogHero title={t.heroTitle} description={t.heroDescription} />
-        <PostGrid heading={t.listHeading} posts={posts} />
+        <PostGrid heading={t.listHeading} posts={posts} empty={t.empty} />
       </main>
       <Footer />
     </>

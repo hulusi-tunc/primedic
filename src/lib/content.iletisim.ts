@@ -44,5 +44,7 @@ export const iletisim = {
       message: { label: "Mesajınız", placeholder: "Mesajınız...", required: true },
     },
     submitLabel: "Mesaj Gönder",
+    sendingLabel: "Gönderiliyor…",
+    successMessage: "Mesajınız alındı. En kısa sürede dönüş yapacağız.",
   },
 } as const;
