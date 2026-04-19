@@ -98,9 +98,10 @@ function FeatureCard({ row }: { row: FeatureRow }) {
               <Image
                 src={row.image}
                 alt={row.imageAlt}
-                fill
+                width={row.imageWidth}
+                height={row.imageHeight}
                 sizes="(min-width: 1024px) 523px, 100vw"
-                className="object-cover object-right"
+                className="absolute inset-0 h-full w-full object-cover object-right"
               />
             </div>
           ) : (
@@ -108,9 +109,10 @@ function FeatureCard({ row }: { row: FeatureRow }) {
               <Image
                 src={row.image}
                 alt={row.imageAlt}
-                fill
+                width={row.imageWidth}
+                height={row.imageHeight}
                 sizes="(min-width: 1024px) 523px, 100vw"
-                className="object-contain object-right"
+                className="absolute inset-0 h-full w-full object-contain object-right"
               />
             </div>
           )}

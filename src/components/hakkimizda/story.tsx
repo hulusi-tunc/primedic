@@ -38,9 +38,10 @@ export async function HakkimizdaStory() {
             <Image
               src={image.src}
               alt={image.alt}
-              fill
+              width={660}
+              height={700}
               sizes="(min-width: 1024px) 520px, 80vw"
-              className="object-cover"
+              className="absolute inset-0 h-full w-full object-cover"
             />
           </div>
         </div>

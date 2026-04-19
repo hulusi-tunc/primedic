@@ -19,9 +19,10 @@ export function PostCard({ post }: { post: PostListItem }) {
         <Image
           src={imageUrl}
           alt={post.coverImage.alt ?? post.title}
-          fill
+          width={1160}
+          height={840}
           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 90vw"
-          className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
         />
       </Link>
 

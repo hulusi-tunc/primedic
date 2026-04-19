@@ -172,10 +172,11 @@ export default async function BlogPostPage({
                   <Image
                     src={coverUrl}
                     alt={post.coverImage.alt ?? post.title}
-                    fill
+                    width={2000}
+                    height={1125}
                     sizes="(min-width: 1024px) 1100px, 92vw"
                     priority
-                    className="object-cover"
+                    className="absolute inset-0 h-full w-full object-cover"
                   />
                 </div>
               </div>

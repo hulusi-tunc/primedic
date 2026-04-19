@@ -158,10 +158,11 @@ export function AksesuarFeatureStrip() {
               <Image
                 src={card.image.src}
                 alt={card.image.alt}
-                fill
+                width={588}
+                height={500}
                 sizes="294px"
                 draggable={false}
-                className="pointer-events-none object-cover object-center"
+                className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center"
               />
             </div>
             <p className="text-body-lg mt-4 px-5 text-center font-medium text-white">

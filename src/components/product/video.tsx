@@ -51,9 +51,10 @@ export function ProductVideo() {
                 <Image
                   src={thumbnailUrl}
                   alt={heading}
-                  fill
+                  width={1280}
+                  height={720}
                   sizes="(max-width: 768px) 100vw, 1437px"
-                  className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
                 />
                 <span className="absolute inset-0 flex items-center justify-center bg-black/20 transition-colors group-hover:bg-black/30">
                   <span className="flex h-[72px] w-[72px] items-center justify-center rounded-full bg-white/95 shadow-2xl transition-transform group-hover:scale-110 md:h-[96px] md:w-[96px]">

@@ -59,9 +59,10 @@ const components: PortableTextComponents = {
             <Image
               src={url}
               alt={value.alt ?? "Blog görseli"}
-              fill
+              width={1600}
+              height={900}
               sizes="(min-width: 1024px) 900px, 92vw"
-              className="object-cover"
+              className="absolute inset-0 h-full w-full object-cover"
             />
           </div>
           {value.caption ? (

@@ -148,6 +148,8 @@ export type FeatureRow = {
   title: string;
   image: string;
   imageAlt: string;
+  imageWidth: number;
+  imageHeight: number;
   bullets: ReadonlyArray<ReadonlyArray<RichPart>>;
   badges?: ReadonlyArray<SpecBadge>;
 };
@@ -167,6 +169,8 @@ export const features: {
       title: "Your Heart Is Safe at All Times",
       image: "/images/features/heartsave-mypad-device.webp",
       imageAlt: "HeartSave myPAD defibrillator device",
+      imageWidth: 523,
+      imageHeight: 378,
       bullets: [
         [
           {
@@ -194,6 +198,8 @@ export const features: {
       title: "Durable and Always Ready",
       image: "/images/features/heartsave-mypad-field.webp",
       imageAlt: "HeartSave myPAD field use",
+      imageWidth: 461,
+      imageHeight: 323,
       bullets: [
         [
           { text: "8-year warranty", strong: true },
@@ -232,6 +238,8 @@ export const features: {
       title: "User-Friendly Design",
       image: "/images/features/heartsave-mypad-screen.webp",
       imageAlt: "HeartSave myPAD color screen interface",
+      imageWidth: 545,
+      imageHeight: 435,
       bullets: [
         [
           { text: "CPR feedback sensor", strong: true },

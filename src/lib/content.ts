@@ -146,6 +146,8 @@ export type FeatureRow = {
   title: string;
   image: string;
   imageAlt: string;
+  imageWidth: number;
+  imageHeight: number;
   bullets: ReadonlyArray<ReadonlyArray<RichPart>>;
   badges?: ReadonlyArray<SpecBadge>;
 };
@@ -165,6 +167,8 @@ export const features: {
       title: "Her An Kalbiniz Güvende",
       image: "/images/features/heartsave-mypad-device.webp",
       imageAlt: "HeartSave myPAD defibrilatör cihazı",
+      imageWidth: 523,
+      imageHeight: 378,
       bullets: [
         [
           {
@@ -192,6 +196,8 @@ export const features: {
       title: "Dayanıklı ve Her Zaman Hazır",
       image: "/images/features/heartsave-mypad-field.webp",
       imageAlt: "HeartSave myPAD saha kullanımı",
+      imageWidth: 461,
+      imageHeight: 323,
       bullets: [
         [
           { text: "8 yıl garanti", strong: true },
@@ -230,6 +236,8 @@ export const features: {
       title: "Kullanıcı Dostu Tasarım",
       image: "/images/features/heartsave-mypad-screen.webp",
       imageAlt: "HeartSave myPAD renkli ekran arayüzü",
+      imageWidth: 545,
+      imageHeight: 435,
       bullets: [
         [
           { text: "CPR geri bildirim sensörü", strong: true },

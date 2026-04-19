@@ -167,9 +167,10 @@ function GroupCard({ group, openRowId, onToggle, registerRef }: GroupCardProps) 
                 key={openRow.image.src}
                 src={openRow.image.src}
                 alt={openRow.image.alt}
-                fill
+                width={766}
+                height={1368}
                 sizes="(max-width: 768px) 90vw, 0px"
-                className="object-contain object-center"
+                className="absolute inset-0 h-full w-full object-contain object-center"
               />
             </div>
           )}
@@ -286,9 +287,10 @@ function VisualColumn({
         key={image.src}
         src={image.src}
         alt={image.alt}
-        fill
+        width={766}
+        height={1368}
         sizes="(max-width: 1024px) 40vw, 380px"
-        className="object-contain object-top"
+        className="absolute inset-0 h-full w-full object-contain object-top"
       />
     </div>
   );

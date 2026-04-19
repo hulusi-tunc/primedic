@@ -56,10 +56,11 @@ export async function AksesuarHero() {
             <Image
               src={hero.image.src}
               alt={hero.image.alt}
-              fill
+              width={1220}
+              height={1232}
               priority
               sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-contain"
+              className="absolute inset-0 h-full w-full object-contain"
             />
           </div>
         </div>

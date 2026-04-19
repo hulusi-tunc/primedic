@@ -7,9 +7,10 @@ export function FamilyBand() {
         <Image
           src="/images/primedic-family.webp"
           alt="Primedic defibrilatör ürün ailesi"
-          fill
+          width={1920}
+          height={857}
           sizes="100vw"
-          className="object-cover"
+          className="absolute inset-0 h-full w-full object-cover"
         />
       </div>
     </section>
