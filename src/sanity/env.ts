@@ -1,19 +1,12 @@
-function assertValue<T>(v: T | undefined, errorMessage: string): T {
-  if (v === undefined) {
-    throw new Error(errorMessage);
-  }
-  return v;
-}
+// Sanity env vars with fallback defaults so the build doesn't crash on
+// environments where they aren't set (e.g. Vercel before env vars are added).
+// These are NEXT_PUBLIC_ values (not secrets) and match the production project.
 
 export const apiVersion =
   process.env.NEXT_PUBLIC_SANITY_API_VERSION || "2025-01-01";
 
-export const dataset = assertValue(
-  process.env.NEXT_PUBLIC_SANITY_DATASET,
-  "Missing env var: NEXT_PUBLIC_SANITY_DATASET",
-);
+export const dataset =
+  process.env.NEXT_PUBLIC_SANITY_DATASET || "production";
 
-export const projectId = assertValue(
-  process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-  "Missing env var: NEXT_PUBLIC_SANITY_PROJECT_ID",
-);
+export const projectId =
+  process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "wpdzr9oh";
