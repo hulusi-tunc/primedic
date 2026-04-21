@@ -7,10 +7,7 @@ import { Footer } from "@/components/sections/footer";
 import { Container } from "@/components/ui/container";
 import { PostBody } from "@/components/blog/portable-text";
 import { client } from "@/sanity/lib/client";
-import {
-  postBySlugQuery,
-  postSlugsByLocaleQuery,
-} from "@/sanity/lib/queries";
+import { postBySlugQuery, postSlugsByLocaleQuery } from "@/sanity/lib/queries";
 import { routing } from "@/i18n/routing";
 import { urlForImage } from "@/sanity/lib/image";
 import type { Post } from "@/sanity/lib/types";
@@ -49,9 +46,9 @@ export async function generateMetadata({
   const locale = await getLocale();
   const post =
     (await client.fetch<Post | null>(postBySlugQuery, { slug, locale })) ??
-    (dummyPosts.find(
-      (p) => p.slug === slug && p.language === locale,
-    ) as Post | undefined) ??
+    (dummyPosts.find((p) => p.slug === slug && p.language === locale) as
+      | Post
+      | undefined) ??
     null;
   if (!post) {
     return {
@@ -64,8 +61,7 @@ export async function generateMetadata({
 
   const canonical = `${SITE_URL}/blog/${post.slug}`;
   const title = post.seo?.title ?? `${post.title} | Primedic Blog`;
-  const description =
-    post.seo?.description ?? post.excerpt ?? undefined;
+  const description = post.seo?.description ?? post.excerpt ?? undefined;
   const dummyCover = (post as Post & { coverUrl?: string }).coverUrl;
   const ogImage = dummyCover
     ? `${SITE_URL}${dummyCover}`
@@ -84,7 +80,9 @@ export async function generateMetadata({
       description,
       locale: "tr_TR",
       siteName: "Primedic — Bilgin Tıp",
-      images: ogImage ? [{ url: ogImage, width: 1200, height: 630 }] : undefined,
+      images: ogImage
+        ? [{ url: ogImage, width: 1200, height: 630 }]
+        : undefined,
       publishedTime: post.publishedAt,
     },
     twitter: {
@@ -110,21 +108,26 @@ export default async function BlogPostPage({
   );
   const post =
     sanityPost ??
-    (dummyPosts.find(
-      (p) => p.slug === slug && p.language === locale,
-    ) as Post | undefined) ??
+    (dummyPosts.find((p) => p.slug === slug && p.language === locale) as
+      | Post
+      | undefined) ??
     null;
 
   if (!post) notFound();
 
   const coverUrl = (post as Post & { coverUrl?: string }).coverUrl
     ? (post as Post & { coverUrl?: string }).coverUrl!
-    : urlForImage(post.coverImage).width(2000).height(1125).url();
-  const dateLabel = new Date(post.publishedAt).toLocaleDateString(locale === "en" ? "en-US" : "tr-TR", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+    : post.coverImage
+      ? urlForImage(post.coverImage).width(2000).height(1125).url()
+      : null;
+  const dateLabel = new Date(post.publishedAt).toLocaleDateString(
+    locale === "en" ? "en-US" : "tr-TR",
+    {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    },
+  );
   const category = post.categories?.[0];
 
   return (
@@ -152,14 +155,10 @@ export default async function BlogPostPage({
                   <time dateTime={post.publishedAt}>{dateLabel}</time>
                 </div>
 
-                <h1 className="mt-6 text-black">
-                  {post.title}
-                </h1>
+                <h1 className="mt-6 text-black">{post.title}</h1>
 
                 {post.excerpt ? (
-                  <p className="text-lead mt-6 text-black/70">
-                    {post.excerpt}
-                  </p>
+                  <p className="text-lead mt-6 text-black/70">{post.excerpt}</p>
                 ) : null}
               </div>
             </Container>
@@ -168,17 +167,19 @@ export default async function BlogPostPage({
           <div className="bg-white pb-[96px] md:pb-[140px]">
             <Container>
               <div className="mx-auto -mt-[48px] max-w-[1120px] md:-mt-[72px]">
-                <div className="relative aspect-[16/9] overflow-hidden rounded-[24px] bg-black/5 ring-1 ring-black/5">
-                  <Image
-                    src={coverUrl}
-                    alt={post.coverImage.alt ?? post.title}
-                    width={2000}
-                    height={1125}
-                    sizes="(min-width: 1024px) 1100px, 92vw"
-                    priority
-                    className="absolute inset-0 h-full w-full object-cover"
-                  />
-                </div>
+                {coverUrl ? (
+                  <div className="relative aspect-[16/9] overflow-hidden rounded-[24px] bg-black/5 ring-1 ring-black/5">
+                    <Image
+                      src={coverUrl}
+                      alt={post.coverImage?.alt ?? post.title}
+                      width={2000}
+                      height={1125}
+                      sizes="(min-width: 1024px) 1100px, 92vw"
+                      priority
+                      className="absolute inset-0 h-full w-full object-cover"
+                    />
+                  </div>
+                ) : null}
               </div>
 
               <div className="mx-auto mt-16 max-w-[880px] md:mt-20">

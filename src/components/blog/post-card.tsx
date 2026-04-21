@@ -3,11 +3,15 @@ import { Link } from "@/i18n/navigation";
 import { urlForImage } from "@/sanity/lib/image";
 import type { PostListItem } from "@/sanity/lib/types";
 
+const PLACEHOLDER_IMAGE = "/placeholder-blog.jpg";
+
 export function PostCard({ post }: { post: PostListItem }) {
   const category = post.categories?.[0];
   const imageUrl = post.coverUrl
     ? post.coverUrl
-    : urlForImage(post.coverImage).width(1160).height(840).url();
+    : post.coverImage
+      ? urlForImage(post.coverImage).width(1160).height(840).url()
+      : PLACEHOLDER_IMAGE;
 
   return (
     <article className="group flex flex-col gap-5">
@@ -18,7 +22,7 @@ export function PostCard({ post }: { post: PostListItem }) {
       >
         <Image
           src={imageUrl}
-          alt={post.coverImage.alt ?? post.title}
+          alt={post.coverImage?.alt ?? post.title}
           width={1160}
           height={840}
           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 90vw"
