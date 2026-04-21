@@ -3,10 +3,7 @@ import { structureTool } from "sanity/structure";
 import { visionTool } from "@sanity/vision";
 import { apiVersion, dataset, projectId } from "./src/sanity/env";
 import { schemaTypes } from "./src/sanity/schemaTypes";
-import {
-  deskStructure,
-  initialValueTemplates,
-} from "./src/sanity/structure";
+import { deskStructure, initialValueTemplates } from "./src/sanity/structure";
 
 export default defineConfig({
   name: "primedic",
@@ -16,7 +13,9 @@ export default defineConfig({
   dataset,
   plugins: [
     structureTool({ structure: deskStructure }),
-    visionTool({ defaultApiVersion: apiVersion }),
+    ...(process.env.NODE_ENV === "development"
+      ? [visionTool({ defaultApiVersion: apiVersion })]
+      : []),
   ],
   schema: {
     types: schemaTypes,
